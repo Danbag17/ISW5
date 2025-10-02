@@ -44,8 +44,15 @@
     <Compile Include="BusinessLogic\Class1.cs" />
     <Compile Include="BusinessLogic\Entities\Class1.cs" />
     <Compile Include="Persistence\Class1.cs" />
-    <Compile Include="Persistence\Entities\Class1.cs" />
     <Compile Include="Persistence\Entities\Employee.cs" />
+    <Compile Include="Persistence\Entities\Area.cs" />
+    <Compile Include="Persistence\Entities\Head.cs" />
+    <Compile Include="Persistence\Entities\Incident.cs" />
+    <Compile Include="Persistence\Entities\Master.cs" />
+    <Compile Include="Persistence\Entities\Operator.cs" />
+    <Compile Include="Persistence\Entities\Part.cs" />
+    <Compile Include="Persistence\Entities\UsedPart.cs" />
+    <Compile Include="Persistence\Entities\WorkOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
