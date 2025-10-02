@@ -8,5 +8,22 @@ namespace ManteHos.Entities
 {
     public partial class Employee
     {
+        public string FullName
+        {
+            get; set;
+        }
+        public string Id
+        {
+            get; set;
+        }
+        public string Password
+        {
+            get; set;
+        }
+        public virtual ICollection<Incident> Incidents
+        {
+            get; set;
+        }
+        
     }
 }

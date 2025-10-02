@@ -8,5 +8,23 @@ namespace ManteHos.Entities
 {
     public partial class Area
     {
+        public String Name         {
+            get; set;
+           
+        }
+        public int ID
+        {
+            get; set;
+        }
+        public virtual Master Masters
+        {
+            get;    set;
+        }
+        
+        public virtual ICollection<Incident> Incidents
+        {
+            get; set;
+        }
+
     }
 }
