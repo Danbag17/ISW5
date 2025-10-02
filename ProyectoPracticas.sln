@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{6FB2E5FA-A255-4426-953F-FBAC6658B922}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{41195AE1-B4D3-444D-919C-6033405E1F3F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManteHosLib", "ClassLibrary\ManteHosLib.csproj", "{41195AE1-B4D3-444D-919C-6033405E1F3F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{89C174A3-FE7B-4889-8814-4614418EE046}"
 EndProject
