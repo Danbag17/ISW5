@@ -15,9 +15,9 @@ namespace ManteHos.Entities
 
         public Area(int id, String name, Master masters)
         {
-            this.Id =  id;
+            this.ID =  id;
             this.Name = name;
-            Master = master;
+            Masters = masters;
         }
     }
 }
