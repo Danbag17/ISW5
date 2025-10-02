@@ -42,7 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLogic\Class1.cs" />
-    <Compile Include="BusinessLogic\Entities\Class1.cs" />
+    <Compile Include="BusinessLogic\Entities\Area.cs" />
+    <Compile Include="BusinessLogic\Entities\Employee.cs" />
+    <Compile Include="BusinessLogic\Entities\Head.cs" />
+    <Compile Include="BusinessLogic\Entities\Incident.cs" />
+    <Compile Include="BusinessLogic\Entities\Master.cs" />
+    <Compile Include="BusinessLogic\Entities\Operator.cs" />
+    <Compile Include="BusinessLogic\Entities\Part.cs" />
+    <Compile Include="BusinessLogic\Entities\UsedPart.cs" />
+    <Compile Include="BusinessLogic\Entities\WorkOrder.cs" />
     <Compile Include="Persistence\Class1.cs" />
     <Compile Include="Persistence\Entities\Employee.cs" />
     <Compile Include="Persistence\Entities\Area.cs" />
@@ -51,6 +59,9 @@
     <Compile Include="Persistence\Entities\Master.cs" />
     <Compile Include="Persistence\Entities\Operator.cs" />
     <Compile Include="Persistence\Entities\Part.cs" />
+    <Compile Include="Persistence\Entities\Priority.cs" />
+    <Compile Include="Persistence\Entities\Shift.cs" />
+    <Compile Include="Persistence\Entities\Status.cs" />
     <Compile Include="Persistence\Entities\UsedPart.cs" />
     <Compile Include="Persistence\Entities\WorkOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
