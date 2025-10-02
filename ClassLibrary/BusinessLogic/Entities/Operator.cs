@@ -8,5 +8,10 @@ namespace ManteHos.Entities
 {
     public partial class Operator
     {
+        public Operator() { }
+
+        public Operator(int Shift) { 
+            this.Shift = Shift;
+        }
     }
 }

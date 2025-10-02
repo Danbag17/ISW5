@@ -8,5 +8,13 @@ namespace ManteHos.Entities
 {
     public partial class UsedPart
     {
+        public UsedPart() { }
+
+        public UsedPart(int Id, int Quantity, Boolean Needed) {
+            this.Id = Id;
+            this.Quantity = Quantity;
+            this.Needed = Needed;
+
+        }
     }
 }

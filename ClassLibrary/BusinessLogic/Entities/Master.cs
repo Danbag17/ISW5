@@ -8,5 +8,7 @@ namespace ManteHos.Entities
 {
     public partial class Master
     {
+        public Master() { }
+        public Master(string Shift) { }
     }
 }
