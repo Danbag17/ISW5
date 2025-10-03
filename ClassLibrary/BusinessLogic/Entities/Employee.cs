@@ -8,11 +8,11 @@ namespace ManteHos.Entities
 {
     public partial class Employee
     {
-        public Employee(string id, string fullName, string password)
+        public Employee(string Id, string fullName, string password)
         {
-            Id = id;
-            FullName = fullName;
-            Password = password;
+            this.Id = Id;
+            this.FullName = fullName;
+            this.Password = password;
             
         }
     }
