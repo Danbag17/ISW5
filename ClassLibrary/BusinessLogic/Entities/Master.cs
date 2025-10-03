@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace ManteHos.Entities
 {
-    public partial class Master
+    public partial class Master : Employee
     {
         public Master() { }
-        public Master(string Shift) { }
+        public Master(string Id, string FullName, string Password):base(Id, FullName, Password) { }
+        
+        
     }
 }
+
