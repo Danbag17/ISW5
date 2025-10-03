@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ManteHos.Entities
 {
-    public partial class Head
+    public partial class Head : Employee
     {
         
     }

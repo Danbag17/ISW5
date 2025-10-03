@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace ManteHos.Entities
 {
-    public partial class Master
+    public partial class Master : Employee
     {
+        public virtual Area Area { get; set; }
+
     }
 }

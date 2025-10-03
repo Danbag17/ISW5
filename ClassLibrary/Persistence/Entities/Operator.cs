@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ManteHos.Entities
 {
-    public partial class Operator
+    public partial class Operator : Employee
     {
+        public int Shift { get; set; }
+        public virtual ICollection<WorkOrder> WorkOrders { get; set; }
+        
     }
 }
