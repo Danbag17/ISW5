@@ -8,5 +8,12 @@ namespace ManteHos.Entities
 {
     public partial class Employee
     {
+        public Employee(string id, string fullName, string password)
+        {
+            Id = id;
+            FullName = fullName;
+            Password = password;
+            
+        }
     }
 }
