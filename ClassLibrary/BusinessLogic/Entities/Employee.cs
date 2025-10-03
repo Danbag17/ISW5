@@ -8,6 +8,7 @@ namespace ManteHos.Entities
 {
     public partial class Employee
     {
+        public Employee() { }
         public Employee(string Id, string fullName, string password)
         {
             this.Id = Id;
