@@ -2,6 +2,7 @@
 using System;
 using System.Reflection;
 using ManteHos.Entities;
+
 namespace ManteHosObjectDesignTests
 {
     [TestClass]
