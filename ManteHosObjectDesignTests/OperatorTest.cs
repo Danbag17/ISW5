@@ -32,7 +32,7 @@ namespace ManteHosObjectDesignTests
             Operator op = new Operator();
 
             Assert.IsNotNull(op, "Operator: default constructor must exist.");
-            Assert.IsNotNull(op.ReportedIncidents, "ReportedIncidents collection not initialized. Call : base()");
+            Assert.IsNotNull(op.ReportedIncidents,"ReportedIncidents collection not initialized. Call : base()");
             Assert.AreEqual(TestData.EXPECTED_EMPTY_LIST_COUNT, op.ReportedIncidents.Count,
 				"ReportedIncidents should be empty after construction.");
 
