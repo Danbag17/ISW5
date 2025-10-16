@@ -11,7 +11,7 @@ namespace ManteHos.Entities
         public Operator() { }
 
         public Operator(int Shift, string Id, string FullName, string Password):base(Id, FullName, Password) { 
-            this.Shift = Morning;
+            this.Shift = Shift.Morning;
                 this.WorkOrders  = new List<WorkOrder>();
         }
     }
