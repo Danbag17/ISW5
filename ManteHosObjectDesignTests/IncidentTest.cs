@@ -44,7 +44,7 @@ namespace ManteHosObjectDesignTests
 
             Assert.AreEqual(TestData.EXPECTED_INCIDENT_DEPARTMENT, incident.Department, "Department not properly initialized. Please check whether you have correctly assigned the parameters in the corresponding class.");
             Assert.AreEqual(TestData.EXPECTED_INCIDENT_DESCRIPTION, incident.Description, "Description not properly initialized. Please check whether you have correctly assigned the parameters in the corresponding class.");
-            Assert.AreEqual(TestData.EXPECTED_INCIDENT_REPORTDATE, incident.ReportDate, "ReportDate not properly initialized. Please check whether you have correctly assigned the parameters in the corresponding class.");
+            Assert.AreEqual(TestData.EXPECTED_INCIDENT_REPORTDATE, incident.Date, "ReportDate not properly initialized. Please check whether you have correctly assigned the parameters in the corresponding class.");
             Assert.AreEqual(TestData.EXPECTED_INCIDENT_EMPLOYEE, incident.Reporter, "Reporter not properly initialized. Please check whether you have correctly assigned the parameters in the corresponding class.");
             Assert.AreEqual(Status.Created, incident.Status, "Initial status values should be Created");
             // Collections Initialized to empty lists by calling this()
