@@ -13,9 +13,8 @@ namespace ManteHos.Entities
             Incidents = new List<Incident>();
         }
 
-        public Area(int id, String name, Master masters)
+        public Area(String name, Master masters)
         {
-            this.ID =  id;
             this.Name = name;
             Masters = masters;
         }

@@ -20,10 +20,8 @@ namespace ManteHos.Entities
         {
             get; set;
         }
-        public virtual ICollection<Incident> Incidents
-        {
-            get; set;
-        }
         
+        public virtual ICollection<Employee> ReportedIncidents { get; set; }
+
     }
 }
