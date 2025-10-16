@@ -12,7 +12,7 @@ namespace ManteHosObjectDesignTests
         public void InheritsFromEmployee()
         {
             Assert.IsTrue(typeof(Employee).IsAssignableFrom(typeof(Master)),
-                "Master must inherit from Employee.");
+                "Master must inherit froms Employee.");
         }
 
         [TestMethod]
