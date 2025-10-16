@@ -10,8 +10,8 @@ namespace ManteHos.Entities
     {
         public Operator() { }
 
-        public Operator(int Shift, string Id, string FullName, string Password):base(Id, FullName, Password) { 
-            this.Shift = Shift.Morning;
+        public Operator(string FullName, string Id, string Password, Shift Shift):base(FullName, Id, Password) { 
+            this.Shift = (int)Shift Morning;
                 this.WorkOrders  = new List<WorkOrder>();
         }
     }

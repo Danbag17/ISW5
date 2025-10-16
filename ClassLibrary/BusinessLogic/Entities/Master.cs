@@ -9,7 +9,7 @@ namespace ManteHos.Entities
     public partial class Master
     {
         public Master() { }
-        public Master(string Id, string FullName, string Password) : base(Id, FullName, Password) { }
+        public Master(string FullName, string Id, string Password) : base(FullName, Id, Password) { }
         
         
     }

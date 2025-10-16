@@ -38,7 +38,7 @@ namespace ManteHos.Entities
             get;
             set;
         }
-        public virtual ICollection<Incident> Incidents
+        public virtual Incident Incident
         {
             get;
             set;

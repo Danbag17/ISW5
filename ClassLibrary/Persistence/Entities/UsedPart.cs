@@ -23,7 +23,7 @@ namespace ManteHos.Entities
             get;
             set;
         }
-        public virtual ICollection<Part> Parts
+        public virtual Part Parts
         {
             get;
             set;

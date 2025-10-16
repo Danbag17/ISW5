@@ -10,11 +10,11 @@ namespace ManteHos.Entities
     {
         public UsedPart() { }
 
-        public UsedPart(int Id, int Quantity, Boolean Needed) {
+        public UsedPart(int Id, int Quantity, Boolean Needed, Part Parts) {
             this.Id = Id;
             this.Quantity = Quantity;
             this.Needed = Needed;
-
+            this.Parts = Parts;
         }
     }
 }
