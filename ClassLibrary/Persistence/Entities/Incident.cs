@@ -10,7 +10,7 @@ namespace ManteHos.Entities
     {
         public int Id { get; set; }
         public String Description { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime ReportDate { get; set; }
         public string Department { get; set; }
         public Priority Priority { get; set; }
         public int Status { get; set; }

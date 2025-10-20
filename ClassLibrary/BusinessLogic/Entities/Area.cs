@@ -9,7 +9,6 @@ namespace ManteHos.Entities
     public partial class Area
     {
         public Area() {
-            //Colecciones
             Incidents = new List<Incident>();
         }
 
@@ -17,6 +16,8 @@ namespace ManteHos.Entities
         {
             this.Name = name;
             Masters = masters;
+            //Colecciones
+            Incidents = new List<Incident>();
         }
     }
 }

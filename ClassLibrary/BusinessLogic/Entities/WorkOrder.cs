@@ -8,10 +8,8 @@ namespace ManteHos.Entities
 {
     public partial class WorkOrder
     {
-        public WorkOrder() { }
-        public WorkOrder(DateTime EndDate, string RepairReport, DateTime StartDate, Incident Incident) {
-            this.EndDate = EndDate;
-            this.RepairReport = RepairReport;
+        public WorkOrder() {}
+        public WorkOrder(DateTime StartDate, Incident Incident) {
             this.StartDate = StartDate;
             this.Incident = Incident;
             this.Operators = new List<Operator>();

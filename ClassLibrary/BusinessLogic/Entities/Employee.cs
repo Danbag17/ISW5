@@ -8,13 +8,16 @@ namespace ManteHos.Entities
 {
     public partial class Employee
     {
-        public Employee() { }
-        public Employee(string Id, string fullName, string password)
+        public Employee() { 
+            this.ReportedIncidents = new List<Incident>();
+        }
+        public Employee(string fullName, string Id, string password) : this()
         {
             this.Id = Id;
             this.FullName = fullName;
             this.Password = password;
             
+
         }
     }
 }

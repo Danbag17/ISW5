@@ -21,7 +21,7 @@ namespace ManteHos.Entities
             get; set;
         }
         
-        public virtual ICollection<Employee> ReportedIncidents { get; set; }
+        public virtual ICollection<Incident> ReportedIncidents { get; set; }
 
     }
 }
