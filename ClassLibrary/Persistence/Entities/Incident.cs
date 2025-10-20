@@ -13,7 +13,7 @@ namespace ManteHos.Entities
         public DateTime ReportDate { get; set; }
         public string Department { get; set; }
         public Priority Priority { get; set; }
-        public int Status { get; set; }
+        public Status Status { get; set; }
         public string RejectReason { get; set; }
         public float Cost { get; set; }
 

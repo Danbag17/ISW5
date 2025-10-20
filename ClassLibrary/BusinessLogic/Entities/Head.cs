@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace ManteHos.Entities
 {
-    public partial class Head : Employee
+    public partial class Head
     {
         public Head() { }
-        public Head(string id, string fullName, string password) {
-            this.Id = id;
-            this.FullName = fullName;
-            this.Password = password;
+        public Head(string FullName, string Id, string Password):base(FullName, Id, Password) {
+            this.Id = Id;
+            this.FullName = FullName;
+            this.Password = Password;
         }
     }
 }

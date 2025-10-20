@@ -9,7 +9,9 @@ namespace ManteHos.Entities
 {
     public partial class Part
     {
-        public Part() { }
+        public Part() {
+            UsedParts = new List<UsedPart>();
+        }
         public Part(string Code, int CurrentQuantity, string Description, int MinimunQuantity, string UnitOfMesuare, float UnitPrice)
         {
             {

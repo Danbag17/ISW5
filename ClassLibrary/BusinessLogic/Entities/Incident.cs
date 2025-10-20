@@ -9,13 +9,14 @@ namespace ManteHos.Entities
     public partial class Incident
     {
         public Incident() { }
-        public Incident(string description, string department, DateTime reportdate, 
+        public Incident(string department, string description, DateTime reportdate, 
                          Employee reporter) {
             
             this.Description = description;
             this.ReportDate = reportdate;
             this.Department = department;
             this.Reporter = reporter;
+            
         }
 
     }
