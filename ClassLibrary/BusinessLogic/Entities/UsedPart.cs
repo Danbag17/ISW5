@@ -10,10 +10,22 @@ namespace ManteHos.Entities
     {
         public UsedPart() { }
 
-        public UsedPart(int Quantity, Part Parts) {
+        public UsedPart(int quantity, Part part) {
             
-            this.Quantity = Quantity;
-            this.Parts = Parts;
+            this.Quantity = quantity;
+            this.Part = part;
+
+            if (part.CurrentQuantity < quantity)
+            {
+                // No hay suficiente → Needed = true
+                this.Needed = true;
+            }
+            else
+            {
+                // Hay suficiente → descontar stock y Needed = false
+                part.CurrentQuantity -= quantity;
+                this.Needed = false;
+            }
         }
     }
 }
