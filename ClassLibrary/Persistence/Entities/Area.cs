@@ -16,7 +16,7 @@ namespace ManteHos.Entities
         {
             get; set;
         }
-        public virtual Master Masters
+        public virtual Master Master
         {
             get;    set;
         }

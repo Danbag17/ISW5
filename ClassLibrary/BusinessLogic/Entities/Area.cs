@@ -15,7 +15,7 @@ namespace ManteHos.Entities
         public Area(String name, Master masters)
         {
             this.Name = name;
-            this.Masters = masters;
+            this.Master = masters;
             //Colecciones
             Incidents = new List<Incident>();
         }

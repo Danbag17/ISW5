@@ -40,7 +40,7 @@ namespace ManteHosObjectDesignTests
             );
 
             Assert.AreEqual(TestData.EXPECTED_AREA_NAME, area.Name, "Name not properly initialized.");
-            Assert.AreEqual(TestData.EXPECTED_AREA_MASTER, area.Masters, "Master not properly initialized.");
+            Assert.AreEqual(TestData.EXPECTED_AREA_MASTER, area.Master, "Master not properly initialized.");
             Assert.IsNotNull(area.Incidents, "Incidents collection not initialized. \n Patch the problem adding: :this() to the constructor with parameters");
             Assert.AreEqual(TestData.EXPECTED_EMPTY_LIST_COUNT, area.Incidents.Count,"Incidents should be empty after construction.");
 
