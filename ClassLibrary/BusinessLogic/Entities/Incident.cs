@@ -13,13 +13,7 @@ namespace ManteHos.Entities
                          Employee reporter) {
             
             this.Description = description;
-            this.Date = date;
             this.Department = department;
-            this.Priority = priority;
-            this.Status = status;
-            this.RejectReason = rejectReason;
-            this.Cost = cost;
-            this.Area = area;
             this.Reporter = reporter;
             
         }
