@@ -15,7 +15,7 @@ namespace ManteHos.Entities
             this.Description = description;
             this.Department = department;
             this.Reporter = reporter;
-            
+            this.ReportDate = reportdate;
         }
 
     }
