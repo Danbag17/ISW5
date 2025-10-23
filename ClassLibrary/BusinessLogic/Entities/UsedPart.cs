@@ -14,7 +14,8 @@ namespace ManteHos.Entities
         }
 
         public UsedPart(int quantity, Part part) : this(){
-
+            if(part  == null) throw new ArgumentNullException(nameof(part));
+            if(quantity<=0) throw new ArgumentOutOfRangeException(nameof(quantity));
             this.Quantity = quantity;
             this.Part = part;
 
