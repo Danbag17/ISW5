@@ -25,9 +25,11 @@ namespace ManteHos.Entities
             set;
 
         }
-        public int CurrentQuantity { 
-            get; 
-            set; 
+        public int CurrentQuantity
+        {
+            get;
+            set;
+
         }
         public int MinimunQuantity
         {
