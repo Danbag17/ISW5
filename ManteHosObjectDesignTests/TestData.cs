@@ -35,7 +35,7 @@ namespace ManteHosObjectDesignTests
         public static string EXPECTED_PART_DESCRIPTION = "Cooling Fan";
         public static float EXPECTED_PART_UNITPRICE = 99.99f;
         public static int EXPECTED_PART_CURRENTQUANTITY = 20;
-        public static int EXPECTED_PART_MINIMUMQUANTITY = 5;
+        public static int EXPECTED_PART_MINIMUMQUANTITY = 8;
         public static string EXPECTED_PART_UNITOFMEASURE = "pcs";
 
         // WORKORDER
@@ -64,7 +64,7 @@ namespace ManteHosObjectDesignTests
         //USEDPART
         public static bool EXPECTED_USEDPART_NEEDED_FALSE = false;
         public static bool EXPECTED_USEDPART_NEEDED_TRUE = true;
-        public static int EXPECTED_USEDPART_QUANTITY_NOT_ENOUGH = EXPECTED_PART_CURRENTQUANTITY - EXPECTED_PART_MINIMUMQUANTITY + 1; // provoca Needed = true
+        public static int EXPECTED_USEDPART_QUANTITY_NOT_ENOUGH = EXPECTED_PART_CURRENTQUANTITY + 1; // provoca Needed = true
         public static int EXPECTED_USEDPART_QUANTITY_ENOUGH = EXPECTED_PART_CURRENTQUANTITY - EXPECTED_PART_MINIMUMQUANTITY - 1;    // provoca Needed = false
 
         // OPERATOR

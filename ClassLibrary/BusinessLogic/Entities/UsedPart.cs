@@ -15,7 +15,7 @@ namespace ManteHos.Entities
             this.Quantity = quantity;
             this.Part = part;
 
-            if (part.CurrentQuantity < quantity)
+            if (part.CurrentQuantity <= quantity)
             {
                 // No hay suficiente → Needed = true
                 this.Needed = true;
