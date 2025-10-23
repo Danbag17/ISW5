@@ -8,27 +8,23 @@ namespace ManteHos.Entities
 {
     public partial class UsedPart
     {
-        public UsedPart() { 
-            if(this.WorkOrders == null)
-                this.WorkOrders = new List<WorkOrder>();
-        }
+        public UsedPart() { }
 
-        public UsedPart(int quantity, Part part) : this(){
-            if(part  == null) throw new ArgumentNullException(nameof(part));
-            if(quantity<=0) throw new ArgumentOutOfRangeException(nameof(quantity));
+        public UsedPart(int quantity, Part part) {
+            
             this.Quantity = quantity;
             this.Part = part;
 
             if (part.CurrentQuantity <= quantity)
             {
-                // Hay suficiente → descontar stock y Needed = false
-                this.Needed = false;
-                part.CurrentQuantity -= quantity; 
+                // No hay suficiente → Needed = true
+                this.Needed = true;
             }
             else
             {
-                // No hay suficiente → Needed = true
-                this.Needed= true;
+                // Hay suficiente → descontar stock y Needed = false
+                part.CurrentQuantity -= quantity;
+                this.Needed = false;
             }
         }
     }
