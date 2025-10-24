@@ -82,6 +82,10 @@
       <Project>{41195ae1-b4d3-444d-919c-6033405e1f3f}</Project>
       <Name>ManteHosLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ManteHosObjectDesignTests\ManteHosObjectDesignTests.csproj">
+      <Project>{99b96769-8c46-4e82-9109-a08a11062168}</Project>
+      <Name>ManteHosObjectDesignTests</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
