@@ -78,8 +78,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ManteHosLib\ManteHosLib.csproj">
-      <Project>{cdc4a765-8af6-4ca4-8c66-dc85e8af69ec}</Project>
+    <ProjectReference Include="..\ClassLibrary\ManteHosLib.csproj">
+      <Project>{41195ae1-b4d3-444d-919c-6033405e1f3f}</Project>
       <Name>ManteHosLib</Name>
     </ProjectReference>
   </ItemGroup>
