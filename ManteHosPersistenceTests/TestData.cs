@@ -51,7 +51,7 @@ namespace ManteHosPersistenceTests
         //USEDPART
         public static bool EXPECTED_USEDPART_NEEDED_FALSE = false;
         public static bool EXPECTED_USEDPART_NEEDED_TRUE = true;
-        public static int EXPECTED_USEDPART_QUANTITY_NOT_ENOUGH = EXPECTED_PART_CURRENTQUANTITY - EXPECTED_PART_MINIMUMQUANTITY + 1; // provoca Needed = true
+        public static int EXPECTED_USEDPART_QUANTITY_NOT_ENOUGH = EXPECTED_PART_CURRENTQUANTITY + 1; // provoca Needed = true
         public static int EXPECTED_USEDPART_QUANTITY_ENOUGH = EXPECTED_PART_CURRENTQUANTITY - EXPECTED_PART_MINIMUMQUANTITY - 1;    // provoca Needed = false
 
         public static UsedPart CreateUsedPart(bool overrideNeeded, int quantity, Part part, out string error)
