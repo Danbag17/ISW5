@@ -25,20 +25,32 @@ namespace ManteHos.Persistence
 
         // DbSets for persistent classes in your case study
         // TO BE DONE by STUDENTS...
+        public virtual DbSet<Area> Areas { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Incident> Incidents { get; set; }
+        public virtual DbSet<Master> Masters { get; set; }
+        public virtual DbSet<Operator> Operators { get; set; }
+        public virtual DbSet<Part> Parts { get; set; }
+        public virtual DbSet<UsedPart> UsedParts { get; set; }
+        public virtual DbSet<WorkOrder> WorkOrders { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-/*                        modelBuilder.Entity<Part>()
-                                    .HasMany(p => p.UsedParts)
-                                    .WithRequired(uP => uP.Part)
-                                    .WillCascadeOnDelete(true);
+            modelBuilder.Properties<DateTime>().Configure(c => c.HasColumnType("datetime2"));
 
-                        modelBuilder.Entity<UsedPart>()
-                            .HasRequired(p => p.Part)
-                            .WithMany(uP => uP.UsedParts)
-                            .WillCascadeOnDelete(false);
-*/
+            base.OnModelCreating(modelBuilder);
+            /*                        modelBuilder.Entity<Part>()
+                                                .HasMany(p => p.UsedParts)
+                                                .WithRequired(uP => uP.Part)
+                                                .WillCascadeOnDelete(true);
+
+                                    modelBuilder.Entity<UsedPart>()
+                                        .HasRequired(p => p.Part)
+                                        .WithMany(uP => uP.UsedParts)
+                                        .WillCascadeOnDelete(false);
+
+            */
 
         }
 

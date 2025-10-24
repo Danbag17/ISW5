@@ -13,7 +13,7 @@ namespace ManteHos.Entities
             Operators = new List<Operator>();
             UsedParts = new List<UsedPart>();
         }
-        public WorkOrder(DateTime StartDate, Incident Incident) {
+        public WorkOrder(DateTime StartDate, Incident Incident) :this() {
             this.StartDate = StartDate;
             this.Incident = Incident;
             this.Operators = new List<Operator>();

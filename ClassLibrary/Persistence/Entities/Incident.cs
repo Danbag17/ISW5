@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,8 +22,11 @@ namespace ManteHos.Entities
 
 
         //Relaciones
+        [InverseProperty("Incidents")]
         public virtual Area Area { get; set; }
-        [Required] public virtual Employee Reporter { get; set; }
+        [Required, InverseProperty("ReportedIncidents")]
+        public virtual Employee Reporter { get; set; }
+        [InverseProperty("Incident")]
         public virtual WorkOrder WorkOrder { get; set; }
     }
 }
