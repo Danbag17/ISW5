@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace ManteHos.Entities
 {
     public partial class Incident
     {
-        public int Id { get; set; }
-        public String Description { get; set; }
-        public DateTime ReportDate { get; set; }
-        public string Department { get; set; }
+        [Key] public int Id { get; set; }
+        [Required] public String Description { get; set; }
+        [Required] public DateTime ReportDate { get; set; }
+        [Required] public string Department { get; set; }
         public Priority Priority { get; set; }
         public Status Status { get; set; }
         public string RejectReason { get; set; }
@@ -20,7 +22,7 @@ namespace ManteHos.Entities
 
         //Relaciones
         public virtual Area Area { get; set; }
-        public virtual Employee Reporter { get; set; }
+        [Required] public virtual Employee Reporter { get; set; }
         public virtual WorkOrder WorkOrder { get; set; }
     }
 }
