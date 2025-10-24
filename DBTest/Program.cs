@@ -84,8 +84,8 @@ namespace DBTest
             dal.Insert<Head>(head);
             dal.Commit();
 
-            Master tfmotu = new Master("Bárcenas", "m1", "m1");
-            dal.Insert<Master>(tfmotu);
+            Master master1 = new Master("Bárcenas", "m1", "m1");
+            dal.Insert<Master>(master1);
             dal.Commit();
 
             Master master2 = new Master("He-Man", "m2", "m2");
@@ -104,9 +104,95 @@ namespace DBTest
             // Populate here the rest of the database
             //
 
+            // ===================================
+            // 2. CREACIÓN DE ÁREAS (a1, a2)
+            // ===================================
+            Console.WriteLine("\n// CREACIÓN DE ÁREAS");
 
+            // Area a1 (asignada a master1)
+            Area a1 = new Area("Área A", master1);
+            dal.Insert<Area>(a1);
+            master1.Area = a1; // Relación bidireccional
 
+            // Area a2 (asignada a master2)
+            Area a2 = new Area("Área B", master2);
+            dal.Insert<Area>(a2);
+            master2.Area = a2; // Relación bidireccional
+
+            dal.Commit(); // Se guardan las 2 áreas y se actualizan las referencias en los masters
+
+            // ===================================
+            // 3. CREACIÓN DE PIEZAS (p1, p2)
+            // ===================================
+            Console.WriteLine("\n// CREACIÓN DE PIEZAS");
+
+            // Part p1 (con stock inicial)
+            Part p1 = new Part("P-COOL-FAN", 20, "Ventilador Refrigeración", 5, "Unidades", 15.50f);
+            dal.Insert<Part>(p1);
+
+            // Part p2 (otra pieza)
+            Part p2 = new Part("P-FILTER", 10, "Filtro de Aire", 3, "Unidades", 5.00f);
+            dal.Insert<Part>(p2);
+
+            dal.Commit(); // Se guardan las 2 piezas
+
+            // ===================================
+            // 4. CREACIÓN DE INCIDENTES (i1, i2)
+            // ===================================
+            Console.WriteLine("\n// CREACIÓN DE INCIDENTES");
+            DateTime hoy = DateTime.Today;
+            // Incident i1 (Reportado por empleado1, asignado a a1)
+            Incident i1 = new Incident("Dpto. 1", "Aire Acondicionado Roto", hoy.AddDays(-2), empleado1);
+            i1.Area = a1; // Relación con Area
+            a1.Incidents.Add(i1); // Relación bidireccional
+            empleado1.ReportedIncidents.Add(i1); // Relación bidireccional con Reporter
+            dal.Insert<Incident>(i1);
+
+            // Incident i2 (Reportado por empleado1, asignado a a2)
+            Incident i2 = new Incident("Dpto. 2", "Caldera sin presión", hoy.AddDays(-1), empleado1);
+            i2.Area = a2; // Relación con Area
+            a2.Incidents.Add(i2);
+            empleado1.ReportedIncidents.Add(i2);
+            dal.Insert<Incident>(i2);
+
+            dal.Commit(); // Se guardan los 2 incidentes
+
+            // ===================================
+            // 5. CREACIÓN DE PARTE DE TRABAJO (o1)
+            // ===================================
+            Console.WriteLine("\n// CREACIÓN DE PARTE DE TRABAJO");
+
+            // WorkOrder o1 (Asignado al incidente i1)
+            WorkOrder o1 = new WorkOrder(hoy, i1);
+
+            // Relación N:M con Operator: op1
+            o1.Operators.Add(op1);
+            op1.WorkOrders.Add(o1);
+
+            // Asignar el WorkOrder al Incidente
+            i1.WorkOrder = o1;
+
+            dal.Insert<WorkOrder>(o1);
+            dal.Commit(); // Se guarda el WorkOrder y se actualizan las relaciones N:M y el Incidente
+
+            // ===================================
+            // 6. CREACIÓN DE PIEZA USADA (up1)
+            // ===================================
+            Console.WriteLine("\n// CREACIÓN DE PIEZA USADA");
+
+            // UsedPart up1 (Usa 5 unidades de p1. Stock p1: 20 -> 15)
+            UsedPart up1 = new UsedPart(5, p1);
+
+            // Relación N:M con WorkOrder: o1
+            o1.UsedParts.Add(up1);
+
+            dal.Insert<UsedPart>(up1);
+            dal.Commit(); // Se guarda la UsedPart y se actualiza el stock de p1
+
+            Console.WriteLine("\nBase de datos poblada correctamente.");
         }
+
+        
 
         // Copiar a partir de aquí
         private void PrintSampleDB(IDAL dal)
