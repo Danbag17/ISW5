@@ -100,13 +100,7 @@ namespace DBTest
             dal.Insert<Employee>(empleado1);
             dal.Commit();
 
-            //
-            // Populate here the rest of the database
-            //
-
-            // ===================================
-            // 2. CREACIÓN DE ÁREAS (a1, a2)
-            // ===================================
+            
             Console.WriteLine("\n// CREACIÓN DE ÁREAS");
 
             // Area a1 (asignada a master1)
@@ -121,9 +115,7 @@ namespace DBTest
 
             dal.Commit(); // Se guardan las 2 áreas y se actualizan las referencias en los masters
 
-            // ===================================
-            // 3. CREACIÓN DE PIEZAS (p1, p2)
-            // ===================================
+           
             Console.WriteLine("\n// CREACIÓN DE PIEZAS");
 
             // Part p1 (con stock inicial)
@@ -136,9 +128,7 @@ namespace DBTest
 
             dal.Commit(); // Se guardan las 2 piezas
 
-            // ===================================
-            // 4. CREACIÓN DE INCIDENTES (i1, i2)
-            // ===================================
+            
             Console.WriteLine("\n// CREACIÓN DE INCIDENTES");
             DateTime hoy = DateTime.Today;
             // Incident i1 (Reportado por empleado1, asignado a a1)
@@ -157,9 +147,6 @@ namespace DBTest
 
             dal.Commit(); // Se guardan los 2 incidentes
 
-            // ===================================
-            // 5. CREACIÓN DE PARTE DE TRABAJO (o1)
-            // ===================================
             Console.WriteLine("\n// CREACIÓN DE PARTE DE TRABAJO");
 
             // WorkOrder o1 (Asignado al incidente i1)
@@ -175,9 +162,7 @@ namespace DBTest
             dal.Insert<WorkOrder>(o1);
             dal.Commit(); // Se guarda el WorkOrder y se actualizan las relaciones N:M y el Incidente
 
-            // ===================================
-            // 6. CREACIÓN DE PIEZA USADA (up1)
-            // ===================================
+           
             Console.WriteLine("\n// CREACIÓN DE PIEZA USADA");
 
             // UsedPart up1 (Usa 5 unidades de p1. Stock p1: 20 -> 15)
@@ -187,14 +172,13 @@ namespace DBTest
             o1.UsedParts.Add(up1);
 
             dal.Insert<UsedPart>(up1);
-            dal.Commit(); // Se guarda la UsedPart y se actualiza el stock de p1
+            dal.Commit(); 
 
             Console.WriteLine("\nBase de datos poblada correctamente.");
         }
 
         
 
-        // Copiar a partir de aquí
         private void PrintSampleDB(IDAL dal)
         {
             Console.WriteLine("\n\nMOSTRANDO LOS DATOS DE LA BD");
