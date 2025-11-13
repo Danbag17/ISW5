@@ -61,9 +61,9 @@
     <Compile Include="BusinessLogic\Entities\Part.cs" />
     <Compile Include="BusinessLogic\Entities\UsedPart.cs" />
     <Compile Include="BusinessLogic\Entities\WorkOrder.cs" />
-    <Compile Include="BusinessLogic\Servicies\IManteHosService.cs" />
-    <Compile Include="BusinessLogic\Servicies\ManteHosService.cs" />
-    <Compile Include="BusinessLogic\Servicies\ServiceException.cs" />
+    <Compile Include="BusinessLogic\Services\IManteHosService.cs" />
+    <Compile Include="BusinessLogic\Services\ManteHosService.cs" />
+    <Compile Include="BusinessLogic\Services\ServiceException.cs" />
     <Compile Include="Persistence\Class1.cs" />
     <Compile Include="Persistence\Entities\Employee.cs" />
     <Compile Include="Persistence\Entities\Area.cs" />
