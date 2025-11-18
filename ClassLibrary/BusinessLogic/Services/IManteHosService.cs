@@ -19,6 +19,10 @@ namespace ManteHos.Services
         //
         // A partir de aquí los necesarios para los CU solicitados
         //
+        void LogIn(string login, string password);
 
+        void LogOut();
+
+        Employee UserLogged();
     }
 }

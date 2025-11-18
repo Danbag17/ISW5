@@ -1,6 +1,6 @@
 ﻿using ManteHos.Entities;
 using ManteHos.Persistence;
-using ManteHos.Servicies;
+using ManteHos.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +14,11 @@ namespace ManteHos.Services
     public class ManteHosService : IManteHosService
     {
         private readonly IDAL dal;
-
+        private Employee User_Logged;
         public ManteHosService(IDAL dal)
         {
             this.dal = dal;
+            User_Logged = null;
         }
 
         /// <summary>
@@ -116,6 +117,34 @@ namespace ManteHos.Services
         //
         // Resto de metodos necesarios para el servicio
         //
+
+        public void LogIn(string login, string password)
+        {
+            if (string.IsNullOrEmpty(login))
+            {
+                throw new ServiceException("El login no puede estar vacío");
+            }
+
+            if (string.IsNullOrEmpty(password))
+            {
+                throw new ServiceException("La contraseña no puede estar vacía");
+            }
+
+            Employee empleado_encontrado = dal.GetById<Employee>(login);
+
+            if (empleado_encontrado == null)
+            {
+                throw new ServiceException("No existe el usuario");
+            }
+
+            if(empleado_encontrado.Password != password)
+            {
+                throw new ServiceException("La contraseña es incorrecta");
+            }
+
+            User_Logged = empleado_encontrado;
+
+        }
 
     }
 }
