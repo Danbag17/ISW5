@@ -146,5 +146,11 @@ namespace ManteHos.Services
 
         }
 
+        public void LogOut()
+        {
+            User_Logged = null;
+            dal.Rollback();
+        }
+
     }
 }
