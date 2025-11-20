@@ -192,9 +192,4 @@ namespace ManteHos.Services
             dal.Commit();
         }
 
-
-        public void Informar_de_incicdencia()
-        {
-
-        }
 }
