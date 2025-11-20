@@ -2,6 +2,7 @@
 using ManteHos.Persistence;
 using ManteHos.Services;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -152,5 +153,36 @@ namespace ManteHos.Services
             dal.Rollback();
         }
 
-    }
+        public void ReviewIncident(int incedentID, bool accepted, string rejectionReason, Area area)
+        {
+            if (User_Logged == null)
+                throw new ServiceException("Debe iniciar sesión.");
+            
+            if (!(User_Logged is Head))
+                throw new ServiceException("Solo un jefe puede revisar incidencias.");
+            
+            Incident incident = dal.GetById<Incident>(incidentId);
+            if (incident == null)
+                throw new ServiceException("La incidencia no existe.");
+
+            if (accepted) {
+                if (area == null)
+                    throw new ServiceException("Una incidencia debe tener un area.");
+                
+                incident.Status= Status.Accepted;
+                incident.Area = area;
+                incident.RejectReason = null;
+            }
+            else
+            {
+                incident.Status = Status.Rejected;
+                if (string.IsNullOrEmpty(rejectionReason))
+                    throw new ServiceException("Debe indicar motivo del rechazo.");
+
+                incident.RejectReason = rejectionReason;
+                incident.Area = null;
+            }
+            dal.Commit();
+        }
+
 }
