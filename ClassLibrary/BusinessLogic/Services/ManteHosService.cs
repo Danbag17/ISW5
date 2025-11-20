@@ -138,7 +138,7 @@ namespace ManteHos.Services
                 throw new ServiceException("No existe el usuario");
             }
 
-            if(empleado_encontrado.Password != password)
+            if (empleado_encontrado.Password != password)
             {
                 throw new ServiceException("La contraseña es incorrecta");
             }
@@ -152,25 +152,30 @@ namespace ManteHos.Services
             User_Logged = null;
             dal.Rollback();
         }
+        public Employee UserLogged()
+        {
+            return User_Logged;
+        }
 
         public void ReviewIncident(int incedentID, bool accepted, string rejectReason, Area area, Priority newPriority)
         {
-            
+
             if (User_Logged == null)
                 throw new ServiceException("Debe iniciar sesión.");
-            
+
             if (!(User_Logged is Head))
                 throw new ServiceException("Solo un jefe puede revisar incidencias.");
-            
+
             Incident incident = dal.GetById<Incident>(incidentId);
             if (incident == null)
                 throw new ServiceException("La incidencia no existe.");
 
-            if (accepted) {
+            if (accepted)
+            {
                 if (area == null)
                     throw new ServiceException("Una incidencia debe tener un area.");
-                
-                incident.Status= Status.Accepted;
+
+                incident.Status = Status.Accepted;
                 incident.Area = area;
                 incident.RejectReason = null;
                 incident.Priority = newPriority;
@@ -186,5 +191,5 @@ namespace ManteHos.Services
             }
             dal.Commit();
         }
-
+    }
 }
