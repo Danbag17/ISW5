@@ -153,8 +153,9 @@ namespace ManteHos.Services
             dal.Rollback();
         }
 
-        public void ReviewIncident(int incedentID, bool accepted, string rejectionReason, Area area)
+        public void ReviewIncident(int incedentID, bool accepted, string rejectReason, Area area, Priority newPriority)
         {
+            
             if (User_Logged == null)
                 throw new ServiceException("Debe iniciar sesión.");
             
@@ -172,14 +173,15 @@ namespace ManteHos.Services
                 incident.Status= Status.Accepted;
                 incident.Area = area;
                 incident.RejectReason = null;
+                incident.Priority = newPriority;
             }
             else
             {
                 incident.Status = Status.Rejected;
-                if (string.IsNullOrEmpty(rejectionReason))
+                if (string.IsNullOrEmpty(rejectReason))
                     throw new ServiceException("Debe indicar motivo del rechazo.");
 
-                incident.RejectReason = rejectionReason;
+                incident.RejectReason = rejectReason;
                 incident.Area = null;
             }
             dal.Commit();
