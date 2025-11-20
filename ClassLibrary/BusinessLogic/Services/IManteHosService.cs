@@ -23,6 +23,10 @@ namespace ManteHos.Services
 
         void LogOut();
 
+        void reviewIncident(int incidentId, bool accepted, string rejectReason, Area area, Priority newPriority);
+
+        WorkOrder AssignWorkOrder(int incidentID, List<Operator> operators);
+
         Employee UserLogged();
     }
 }
