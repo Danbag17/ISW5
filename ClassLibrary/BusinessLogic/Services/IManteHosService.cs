@@ -19,11 +19,11 @@ namespace ManteHos.Services
         //
         // A partir de aquí los necesarios para los CU solicitados
         //
-        void LogIn(string login, string password);
+        void Login(string login, string password);
 
-        void LogOut();
+        void Logout();
 
-        void reviewIncident(int incidentId, bool accepted, string rejectReason, Area area, Priority newPriority);
+        void ReviewIncident(int incidentId, bool accepted, string rejectReason, Area area, Priority newPriority);
 
         WorkOrder AssignWorkOrder(int incidentID, List<Operator> operators);
 

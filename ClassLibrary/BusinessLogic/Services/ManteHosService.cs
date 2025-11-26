@@ -119,7 +119,7 @@ namespace ManteHos.Services
         // Resto de metodos necesarios para el servicio
         //
 
-        public void LogIn(string login, string password)
+        public void Login(string login, string password)
         {
             if (string.IsNullOrEmpty(login))
             {
@@ -147,7 +147,7 @@ namespace ManteHos.Services
 
         }
 
-        public void LogOut()
+        public void Logout()
         {
             User_Logged = null;
             dal.Rollback();
