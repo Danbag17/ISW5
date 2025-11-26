@@ -25,10 +25,11 @@ namespace ManteHos.Services
 
         void ReviewIncident(int incidentId, bool accepted, string rejectReason, Area area, Priority newPriority);
 
-        WorkOrder AssignWorkOrder(int incidentID, List<Operator> operators);
+        //WorkOrder AssignWorkOrder(int incidentID, List<Operator> operators);
 
         Employee UserLogged();
 
+        void AddIncident(Incident incident);
 
     }
 }

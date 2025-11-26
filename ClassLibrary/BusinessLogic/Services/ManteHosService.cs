@@ -191,5 +191,13 @@ namespace ManteHos.Services
             }
             dal.Commit();
         }
+
+        public void AddIncident(Incident incident)
+        {
+            dal.Insert<Incident>(incident);
+            dal.Commit();
+        }
+
+
     }
 }
