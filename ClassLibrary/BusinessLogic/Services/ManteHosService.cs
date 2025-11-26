@@ -192,33 +192,4 @@ namespace ManteHos.Services
             dal.Commit();
         }
 
-        public WorkOrder AssignWorkOrder(int incidentId, List<Operator> operators)
-        {
-            if (User_Logged == null)
-                throw new ServiceException("Debe iniciar sesión.");
-
-            if (!(User_Logged is Master))
-                throw new ServiceException("Solo un maestro puede asignar órdenes de trabajo.");
-
-            Incident incident = dal.GetById<Incident>(incidentId);
-            if (incident == null)
-                throw new ServiceException("La incidencia no existe.");
-
-            if (incident.Status != Status.Accepted)
-                throw new ServiceException("La incidencia debe estar aceptada");
-
-            if (operators == null || operators.Count == 0)
-                throw new ServiceException("Debe asignar almenos un operario.");
-
-            WorkOrder order = new WorkOrder(DateTime.Now, incident);
-            order.Incident = incident;
-            foreach (var op in operators)
-                order.AddOperator(op);
-
-            dal.Insert(order);
-            dal.Commit();
-
-            return order;
-        }
-    }
 }

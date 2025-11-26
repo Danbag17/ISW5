@@ -28,5 +28,7 @@ namespace ManteHos.Services
         WorkOrder AssignWorkOrder(int incidentID, List<Operator> operators);
 
         Employee UserLogged();
+
+
     }
 }
