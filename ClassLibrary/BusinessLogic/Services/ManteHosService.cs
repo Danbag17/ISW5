@@ -197,7 +197,7 @@ namespace ManteHos.Services
             dal.Insert<Incident>(incident);
             dal.Commit();
         }
-
+        
 
     }
 }
