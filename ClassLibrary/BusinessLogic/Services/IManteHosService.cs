@@ -31,9 +31,9 @@ namespace ManteHos.Services
 
         void AddIncident(Incident incident);
 
-        WorkOrder AssignWorkOrder(int incidentId, List<Operator> operators);
+        WorkOrder AssignWorkOrder(Incident incident, List<Operator> operators);
 
-        WorkOrder CloseWorkOrder(int workOrderId, string report, DateTime endDate);
+        WorkOrder CloseWorkOrder(WorkOrder wo, string report, DateTime endDate);
 
 
     }
