@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBTest", "DBTest\DBTest.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4-BusinessLogicTest", "4-BusinessLogicTest\4-BusinessLogicTest.csproj", "{B08CF855-97C2-48EF-B0EE-D21F0883C6CF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManteHosGUI", "ManteHosGUI\ManteHosGUI.csproj", "{6B78D36F-4660-4E90-A194-765127D504FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{B08CF855-97C2-48EF-B0EE-D21F0883C6CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B08CF855-97C2-48EF-B0EE-D21F0883C6CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B08CF855-97C2-48EF-B0EE-D21F0883C6CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B78D36F-4660-4E90-A194-765127D504FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B78D36F-4660-4E90-A194-765127D504FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B78D36F-4660-4E90-A194-765127D504FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B78D36F-4660-4E90-A194-765127D504FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
