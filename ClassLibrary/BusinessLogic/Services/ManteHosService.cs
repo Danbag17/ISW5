@@ -160,8 +160,6 @@ namespace ManteHos.Services
         public void ReviewIncident(Incident incident, bool accepted, string rejectReason,  Area area, Priority newPriority)
         {
 
-            if (incident == null)
-                throw new ServiceException("La incidencia no existe.");
 
             if (accepted)
             {
