@@ -199,7 +199,7 @@ namespace ManteHos.Services
         }
         public WorkOrder AssignWorkOrder(int incidentId, List<Operator> operators)
         {
-            //Usuario logeado
+            //Usuario logeado correcto
             if (User_Logged == null)
                 throw new ServiceException("Debe iniciar sesión.");
 
