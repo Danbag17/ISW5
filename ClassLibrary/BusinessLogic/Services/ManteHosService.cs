@@ -197,7 +197,84 @@ namespace ManteHos.Services
             dal.Insert<Incident>(incident);
             dal.Commit();
         }
-        
+        public WorkOrder AssignWorkOrder(int incidentId, List<Operator> operators)
+        {
+            //Usuario logeado
+            if (User_Logged == null)
+                throw new ServiceException("Debe iniciar sesión.");
+
+            // El usuario debe ser Master
+            if (!(User_Logged is Master))
+                throw new ServiceException("Solo un maestro puede asignar órdenes de trabajo.");
+
+            Master master = (Master)User_Logged;
+
+            //Miramos si la incidencia existe
+            Incident incident = dal.GetById<Incident>(incidentId);
+            if (incident == null)
+                throw new ServiceException("La incidencia no existe.");
+
+            //Miramos si ha sido aceptada
+            if (incident.Status != Status.Accepted)
+                throw new ServiceException("La incidencia debe estar aceptada.");
+
+            //La incidencia debe estar en el area de master
+            if (incident.Area == null || incident.Area.Id != master.Area.Id)
+                throw new ServiceException("La incidencia pertenece a otra área.");
+
+            //Comprobamos si hay operadores disponibles
+            if (operators == null || operators.Count == 0)
+                throw new ServiceException("Debe asignar al menos un operario.");
+
+            //Creamos la orden
+            WorkOrder wo = new WorkOrder(DateTime.Now, incident);
+
+            //Asignamos un operador
+            foreach (var op in operators)
+                wo.AddOperator(op);
+
+            dal.Insert(wo);
+            dal.Commit();
+
+            return wo;
+        }
+
+        public WorkOrder CloseWorkOrder(int workOrderId, string report, DateTime endDate)
+        {
+            if (User_Logged == null)
+                throw new ServiceException("Debe iniciar sesión.");
+
+            if (!(User_Logged is Operator opLogged))
+                throw new ServiceException("Solo un operario puede cerrar órdenes de trabajo.");
+
+            WorkOrder wo = dal.GetById<WorkOrder>(workOrderId);
+            if (wo == null)
+                throw new ServiceException("La orden de trabajo no existe.");
+
+            if (!wo.Operators.Contains(opLogged))
+                throw new ServiceException("El operario no tiene asignada esta orden de trabajo.");
+
+            if (wo.EndDate != default(DateTime))
+                throw new ServiceException("La orden de trabajo ya está cerrada.");
+
+            //Miramos si quedan piezas pendientes
+            bool pendingParts = wo.UsedParts.Any(up => up.Needed);
+            if (pendingParts)
+                throw new ServiceException("La orden tiene piezas pendientes. No se puede cerrar.");
+
+            //Validamos los datos del operario
+            if (string.IsNullOrWhiteSpace(report))
+                throw new ServiceException("Debe indicar un informe de reparación.");
+
+            wo.RepairReport = report;
+            wo.EndDate = endDate;
+
+            dal.Commit();
+
+            return wo;
+        }
+
+
 
     }
 }
