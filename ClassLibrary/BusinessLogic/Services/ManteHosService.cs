@@ -157,16 +157,9 @@ namespace ManteHos.Services
             return User_Logged;
         }
 
-        public void ReviewIncident(int incidentId, bool accepted, string rejectReason, Area area, Priority newPriority)
+        public void ReviewIncident(Incident incident, bool accepted, string rejectReason,  Area area, Priority newPriority)
         {
 
-            if (User_Logged == null)
-                throw new ServiceException("Debe iniciar sesión.");
-
-            if (!(User_Logged is Head))
-                throw new ServiceException("Solo un jefe puede revisar incidencias.");
-
-            Incident incident = dal.GetById<Incident>(incidentId);
             if (incident == null)
                 throw new ServiceException("La incidencia no existe.");
 

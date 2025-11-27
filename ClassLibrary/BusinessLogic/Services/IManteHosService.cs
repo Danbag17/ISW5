@@ -23,7 +23,7 @@ namespace ManteHos.Services
 
         void Logout();
 
-        void ReviewIncident(int incidentId, bool accepted, string rejectReason, Area area, Priority newPriority);
+        void ReviewIncident(Incident incident, bool accepted, string rejectReason, Area area, Priority newPriority);
 
         //WorkOrder AssignWorkOrder(int incidentID, List<Operator> operators);
 
