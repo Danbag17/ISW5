@@ -160,7 +160,6 @@ namespace ManteHos.Services
         public void ReviewIncident(Incident incident, bool accepted, string rejectReason,  Area area, Priority newPriority)
         {
 
-
             if (accepted)
             {
                 if (area == null)
