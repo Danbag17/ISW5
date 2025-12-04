@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AñadirIncidencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AñadirIncidencia.Designer.cs">
+      <DependentUpon>AñadirIncidencia.cs</DependentUpon>
+    </Compile>
     <Compile Include="HospitalApp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +76,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AñadirIncidencia.resx">
+      <DependentUpon>AñadirIncidencia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HospitalApp.resx">
       <DependentUpon>HospitalApp.cs</DependentUpon>
     </EmbeddedResource>
