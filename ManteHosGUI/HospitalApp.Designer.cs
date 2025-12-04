@@ -28,28 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.txtBienvenida = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btInicioSesion = new System.Windows.Forms.Button();
             this.panelLogin = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.txtContraseña = new System.Windows.Forms.TextBox();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
+            this.Contraseña = new System.Windows.Forms.Label();
+            this.Usuario = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.panelLogin.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // txtBienvenida
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(302, 68);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(458, 38);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Bienvenido a ManteHospital!";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.txtBienvenida.AutoSize = true;
+            this.txtBienvenida.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBienvenida.Location = new System.Drawing.Point(302, 68);
+            this.txtBienvenida.Name = "txtBienvenida";
+            this.txtBienvenida.Size = new System.Drawing.Size(458, 38);
+            this.txtBienvenida.TabIndex = 0;
+            this.txtBienvenida.Text = "Bienvenido a ManteHospital!";
+            this.txtBienvenida.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -61,12 +61,14 @@
             // 
             // btInicioSesion
             // 
+            this.btInicioSesion.AutoSize = true;
+            this.btInicioSesion.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btInicioSesion.BackColor = System.Drawing.SystemColors.Highlight;
             this.btInicioSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btInicioSesion.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.btInicioSesion.Location = new System.Drawing.Point(975, 385);
+            this.btInicioSesion.Location = new System.Drawing.Point(919, 371);
             this.btInicioSesion.Name = "btInicioSesion";
-            this.btInicioSesion.Size = new System.Drawing.Size(166, 53);
+            this.btInicioSesion.Size = new System.Drawing.Size(164, 39);
             this.btInicioSesion.TabIndex = 2;
             this.btInicioSesion.Text = "Iniciar sesión";
             this.btInicioSesion.UseVisualStyleBackColor = false;
@@ -74,58 +76,59 @@
             // 
             // panelLogin
             // 
-            this.panelLogin.Controls.Add(this.textBox2);
-            this.panelLogin.Controls.Add(this.textBox1);
-            this.panelLogin.Controls.Add(this.label4);
-            this.panelLogin.Controls.Add(this.label3);
-            this.panelLogin.Controls.Add(this.label1);
+            this.panelLogin.Controls.Add(this.txtContraseña);
+            this.panelLogin.Controls.Add(this.txtUsuario);
+            this.panelLogin.Controls.Add(this.Contraseña);
+            this.panelLogin.Controls.Add(this.Usuario);
+            this.panelLogin.Controls.Add(this.txtBienvenida);
             this.panelLogin.Controls.Add(this.btInicioSesion);
             this.panelLogin.Controls.Add(this.menuStrip1);
             this.panelLogin.Location = new System.Drawing.Point(-1, 0);
             this.panelLogin.Name = "panelLogin";
             this.panelLogin.Size = new System.Drawing.Size(1156, 451);
             this.panelLogin.TabIndex = 3;
+            this.panelLogin.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLogin_Paint);
             // 
-            // textBox2
+            // txtContraseña
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(401, 232);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(240, 34);
-            this.textBox2.TabIndex = 6;
-            this.textBox2.UseSystemPasswordChar = true;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.txtContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContraseña.Location = new System.Drawing.Point(401, 232);
+            this.txtContraseña.Name = "txtContraseña";
+            this.txtContraseña.Size = new System.Drawing.Size(240, 34);
+            this.txtContraseña.TabIndex = 6;
+            this.txtContraseña.UseSystemPasswordChar = true;
+            this.txtContraseña.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // textBox1
+            // txtUsuario
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(401, 178);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(240, 34);
-            this.textBox1.TabIndex = 5;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsuario.Location = new System.Drawing.Point(401, 178);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.Size = new System.Drawing.Size(240, 34);
+            this.txtUsuario.TabIndex = 5;
+            this.txtUsuario.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // label4
+            // Contraseña
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(259, 232);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(136, 29);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Contraseña";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.Contraseña.AutoSize = true;
+            this.Contraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Contraseña.Location = new System.Drawing.Point(259, 232);
+            this.Contraseña.Name = "Contraseña";
+            this.Contraseña.Size = new System.Drawing.Size(136, 29);
+            this.Contraseña.TabIndex = 4;
+            this.Contraseña.Text = "Contraseña";
+            this.Contraseña.Click += new System.EventHandler(this.label4_Click);
             // 
-            // label3
+            // Usuario
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(299, 178);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 29);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Usuario";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.Usuario.AutoSize = true;
+            this.Usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Usuario.Location = new System.Drawing.Point(299, 178);
+            this.Usuario.Name = "Usuario";
+            this.Usuario.Size = new System.Drawing.Size(96, 29);
+            this.Usuario.TabIndex = 3;
+            this.Usuario.Text = "Usuario";
+            this.Usuario.Click += new System.EventHandler(this.label3_Click);
             // 
             // menuStrip1
             // 
@@ -145,7 +148,7 @@
             this.Controls.Add(this.panelLogin);
             this.Controls.Add(this.label2);
             this.Name = "HospitalApp";
-            this.Text = "Form1";
+            this.Text = "ManteHospital";
             this.Load += new System.EventHandler(this.HospitalApp_Load);
             this.panelLogin.ResumeLayout(false);
             this.panelLogin.PerformLayout();
@@ -156,14 +159,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label txtBienvenida;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btInicioSesion;
         private System.Windows.Forms.Panel panelLogin;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtContraseña;
+        private System.Windows.Forms.TextBox txtUsuario;
+        private System.Windows.Forms.Label Contraseña;
+        private System.Windows.Forms.Label Usuario;
         private System.Windows.Forms.MenuStrip menuStrip1;
     }
 }
