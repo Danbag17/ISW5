@@ -1,4 +1,5 @@
-﻿using ManteHos.Services;
+﻿using ManteHos.Entities;
+using ManteHos.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,7 +41,24 @@ namespace ManteHosGUI
             this.service.Login(txtUsuario.Text, txtContraseña.Text);
             panelLogin.Visible = false;
             menuStrip1.Visible = true;
-        }
+                
+                Employee usuario = this.service.UserLogged();
+                
+                //Vemos quien se logea y dependiendo de su rango tendran unas funciones u otras
+                if (usuario is Head) // Es un Jefe
+                {
+                    MenuJefes.Visible = true;
+                }
+                else if (usuario is Master) // Es un Maestro
+                {
+                    MenuMaestros.Visible = true;
+                }
+                else if (usuario is Operator) // Es un Operario
+                {
+                    MenuOperarios.Visible = true;
+                }
+                MessageBox.Show("Bienvenido " + usuario.FullName);
+            }
             catch (Exception ex) {
             MessageBox.Show(ex.Message); // Si el servicio no funciona, mostramos el error
             }
@@ -67,6 +85,11 @@ namespace ManteHosGUI
         }
 
         private void panelLogin_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }

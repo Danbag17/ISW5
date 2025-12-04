@@ -37,7 +37,11 @@
             this.Contraseña = new System.Windows.Forms.Label();
             this.Usuario = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.MenuJefes = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuMaestros = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuOperarios = new System.Windows.Forms.ToolStripMenuItem();
             this.panelLogin.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtBienvenida
@@ -76,21 +80,22 @@
             // 
             // panelLogin
             // 
+            this.panelLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelLogin.Controls.Add(this.txtContraseña);
             this.panelLogin.Controls.Add(this.txtUsuario);
             this.panelLogin.Controls.Add(this.Contraseña);
             this.panelLogin.Controls.Add(this.Usuario);
             this.panelLogin.Controls.Add(this.txtBienvenida);
             this.panelLogin.Controls.Add(this.btInicioSesion);
-            this.panelLogin.Controls.Add(this.menuStrip1);
-            this.panelLogin.Location = new System.Drawing.Point(-1, 0);
+            this.panelLogin.Location = new System.Drawing.Point(-1, -1);
             this.panelLogin.Name = "panelLogin";
-            this.panelLogin.Size = new System.Drawing.Size(1156, 451);
+            this.panelLogin.Size = new System.Drawing.Size(1156, 452);
             this.panelLogin.TabIndex = 3;
             this.panelLogin.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLogin_Paint);
             // 
             // txtContraseña
             // 
+            this.txtContraseña.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContraseña.Location = new System.Drawing.Point(401, 232);
             this.txtContraseña.Name = "txtContraseña";
@@ -101,6 +106,7 @@
             // 
             // txtUsuario
             // 
+            this.txtUsuario.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.Location = new System.Drawing.Point(401, 178);
             this.txtUsuario.Name = "txtUsuario";
@@ -110,6 +116,7 @@
             // 
             // Contraseña
             // 
+            this.Contraseña.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Contraseña.AutoSize = true;
             this.Contraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Contraseña.Location = new System.Drawing.Point(259, 232);
@@ -121,6 +128,7 @@
             // 
             // Usuario
             // 
+            this.Usuario.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Usuario.AutoSize = true;
             this.Usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Usuario.Location = new System.Drawing.Point(299, 178);
@@ -133,18 +141,44 @@
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuJefes,
+            this.MenuMaestros,
+            this.MenuOperarios});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1156, 28);
-            this.menuStrip1.TabIndex = 7;
+            this.menuStrip1.Size = new System.Drawing.Size(1152, 30);
+            this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.Visible = false;
+            // 
+            // MenuJefes
+            // 
+            this.MenuJefes.Name = "MenuJefes";
+            this.MenuJefes.Size = new System.Drawing.Size(92, 26);
+            this.MenuJefes.Text = "MenuJefes";
+            this.MenuJefes.Visible = false;
+            // 
+            // MenuMaestros
+            // 
+            this.MenuMaestros.Name = "MenuMaestros";
+            this.MenuMaestros.Size = new System.Drawing.Size(120, 26);
+            this.MenuMaestros.Text = "MenuMaestros";
+            this.MenuMaestros.Visible = false;
+            // 
+            // MenuOperarios
+            // 
+            this.MenuOperarios.Name = "MenuOperarios";
+            this.MenuOperarios.Size = new System.Drawing.Size(125, 26);
+            this.MenuOperarios.Text = "MenuOperarios";
+            this.MenuOperarios.Visible = false;
             // 
             // HospitalApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1152, 450);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panelLogin);
             this.Controls.Add(this.label2);
             this.Name = "HospitalApp";
@@ -152,6 +186,8 @@
             this.Load += new System.EventHandler(this.HospitalApp_Load);
             this.panelLogin.ResumeLayout(false);
             this.panelLogin.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,6 +204,9 @@
         private System.Windows.Forms.Label Contraseña;
         private System.Windows.Forms.Label Usuario;
         private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem MenuJefes;
+        private System.Windows.Forms.ToolStripMenuItem MenuMaestros;
+        private System.Windows.Forms.ToolStripMenuItem MenuOperarios;
     }
 }
 
