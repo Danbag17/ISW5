@@ -1,6 +1,6 @@
 ﻿namespace ManteHosGUI
 {
-    partial class Form1
+    partial class HospitalApp
     {
         /// <summary>
         /// Variable del diseñador necesaria.
