@@ -37,11 +37,7 @@
             this.Contraseña = new System.Windows.Forms.Label();
             this.Usuario = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.MenuJefes = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuMaestros = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuOperarios = new System.Windows.Forms.ToolStripMenuItem();
             this.panelLogin.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtBienvenida
@@ -141,37 +137,12 @@
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuJefes,
-            this.MenuMaestros,
-            this.MenuOperarios});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1152, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1152, 28);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.Visible = false;
-            // 
-            // MenuJefes
-            // 
-            this.MenuJefes.Name = "MenuJefes";
-            this.MenuJefes.Size = new System.Drawing.Size(92, 26);
-            this.MenuJefes.Text = "MenuJefes";
-            this.MenuJefes.Visible = false;
-            // 
-            // MenuMaestros
-            // 
-            this.MenuMaestros.Name = "MenuMaestros";
-            this.MenuMaestros.Size = new System.Drawing.Size(120, 26);
-            this.MenuMaestros.Text = "MenuMaestros";
-            this.MenuMaestros.Visible = false;
-            // 
-            // MenuOperarios
-            // 
-            this.MenuOperarios.Name = "MenuOperarios";
-            this.MenuOperarios.Size = new System.Drawing.Size(125, 26);
-            this.MenuOperarios.Text = "MenuOperarios";
-            this.MenuOperarios.Visible = false;
             // 
             // HospitalApp
             // 
@@ -186,8 +157,6 @@
             this.Load += new System.EventHandler(this.HospitalApp_Load);
             this.panelLogin.ResumeLayout(false);
             this.panelLogin.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,9 +173,6 @@
         private System.Windows.Forms.Label Contraseña;
         private System.Windows.Forms.Label Usuario;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem MenuJefes;
-        private System.Windows.Forms.ToolStripMenuItem MenuMaestros;
-        private System.Windows.Forms.ToolStripMenuItem MenuOperarios;
     }
 }
 

@@ -80,16 +80,37 @@
     <Compile Include="HospitalApp.Designer.cs">
       <DependentUpon>HospitalApp.cs</DependentUpon>
     </Compile>
+    <Compile Include="JefeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JefeForm.Designer.cs">
+      <DependentUpon>JefeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MaestroForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MaestroForm.Designer.cs">
+      <DependentUpon>MaestroForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManteHosFormBase.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ManteHosFormBase.Designer.cs">
       <DependentUpon>ManteHosFormBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="OperarioForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OperarioForm.Designer.cs">
+      <DependentUpon>OperarioForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AñadirIncidencia.resx">
       <DependentUpon>AñadirIncidencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmpleadoForm.resx">
+      <DependentUpon>EmpleadoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HospitalApp.resx">
       <DependentUpon>HospitalApp.cs</DependentUpon>

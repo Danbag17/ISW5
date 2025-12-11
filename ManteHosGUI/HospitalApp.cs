@@ -39,25 +39,50 @@ namespace ManteHosGUI
             try { 
             //El formulario llama al servicio para que intente loguear al usuario
             this.service.Login(txtUsuario.Text, txtContraseña.Text);
-            panelLogin.Visible = false;
-            menuStrip1.Visible = true;
+          
                 
                 Employee usuario = this.service.UserLogged();
-                
+
                 //Vemos quien se logea y dependiendo de su rango tendran unas funciones u otras
-                if (usuario is Head) // Es un Jefe
+                // Variable para guardar la ventana que vamos a abrir
+                Form ventanaApertura = null;
+
+                // 3. SEMÁFORO DE ROLES
+
+                if (usuario is Head) // ¿Es Jefe?
                 {
-                    MenuJefes.Visible = true;
+                    ventanaApertura = new JefeForm(this.service);
                 }
-                else if (usuario is Master) // Es un Maestro
+                else if (usuario is Master) // ¿Es Maestro?
                 {
-                    MenuMaestros.Visible = true;
+                    ventanaApertura = new MaestroForm(this.service);
                 }
-                else if (usuario is Operator) // Es un Operario
+                else if (usuario is Operator) // ¿Es Operario?
                 {
-                    MenuOperarios.Visible = true;
+                    ventanaApertura = new OperarioForm(this.service);
                 }
-                MessageBox.Show("Bienvenido " + usuario.FullName);
+                else if (usuario is Employee) // ¿Es un empleado?
+                {
+                    
+                    ventanaApertura = new EmpleadoForm(this.service);
+                }
+
+                // 4. ABRIR LA VENTANA
+                if (ventanaApertura != null)
+                {
+                    this.Hide(); // Ocultamos el Login
+
+                    MessageBox.Show("Bienvenido " + usuario.FullName);
+
+                    
+                    ventanaApertura.ShowDialog();
+
+                    // Al cerrarse la otra ventana, el código sigue por aquí:
+                    this.service.Logout(); // Hacemos Logout
+                    this.Show(); // Volvemos a mostrar el Login
+                    txtContraseña.Text = ""; // Limpiamos la contraseña
+                    txtUsuario.Text = ""; //Limpiamos el usuario
+                }
             }
             catch (Exception ex) {
             MessageBox.Show(ex.Message); // Si el servicio no funciona, mostramos el error

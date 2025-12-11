@@ -21,6 +21,23 @@ namespace ManteHosGUI
         public EmpleadoForm(IManteHosService s) : base(s)
         {
             InitializeComponent();
+            
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            AñadirIncidencia ventana = new AñadirIncidencia(this.service);
+        }
+
+        private void toolStripTextBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CerrarSesion_Click(object sender, EventArgs e)
+        {
+           this.Close();
+
         }
     }
 }
