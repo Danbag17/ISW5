@@ -42,12 +42,35 @@ namespace ManteHosGUI
                 nombre = incident.Reporter.FullName;
             lblReportado.Text = nombre;
             lblDept.Text = incident.Department;
-            lblPriori.Text = incident.Priority;
+            lblPriori.Text = incident.Priority.ToString();
             //comprobar si directamente se pone valor = incident.Nombre o &"Nombre: "{incident.Nombre}
         }
         private void CargarAreas()
         {
-            var areas;
+            var areas = service.GetAllAreas();
+            cbArea.DataSource= areas;
+            cbArea.DisplayMember= "Name";
+            cbArea.ValueMember = "Id";
         }
+        private void CargarPrioridades()
+        {
+            cbPrioridad.DataSource = Enum.GetValues(typeof(Priority));
+        }
+
+        private void ConfigurarEventosDecision()
+        {
+            rbAceptar.CheckedChanged += (s, e) => ActualizarUI;
+        }
+
+        private void ActualizarUI()
+        {
+
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
