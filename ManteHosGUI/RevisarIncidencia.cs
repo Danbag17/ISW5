@@ -59,7 +59,7 @@ namespace ManteHosGUI
 
         private void ConfigurarEventosDecision()
         {
-            rbAceptar.CheckedChanged += (s, e) => ActualizarUI;
+            rbAceptar.CheckedChanged += (s, e) => ActualizarUI();
         }
 
         private void ActualizarUI()
