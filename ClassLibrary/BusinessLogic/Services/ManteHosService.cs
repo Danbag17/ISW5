@@ -236,6 +236,11 @@ namespace ManteHos.Services
             return wo;
         }
 
+        public IEnumerable<Area> GetAreas()
+        {
+            return dal.GetAll<Area>();
+        }
+
 
 
 

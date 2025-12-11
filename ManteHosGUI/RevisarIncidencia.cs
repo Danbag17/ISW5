@@ -11,6 +11,7 @@ using ManteHos.Services;
 using ManteHos.Entities;
 using System.Drawing.Text;
 using System.Runtime.Remoting;
+using ManteHos.Persistence;
 
 namespace ManteHosGUI
 {
@@ -49,7 +50,7 @@ namespace ManteHosGUI
         }
         private void CargarAreas()
         {
-            var listaAreas = service.GetAllAreas();
+            var listaAreas = service.GetAreas();
             cbArea.DataSource= listaAreas;
             cbArea.DisplayMember= "Name";
             cbArea.ValueMember = "Id";

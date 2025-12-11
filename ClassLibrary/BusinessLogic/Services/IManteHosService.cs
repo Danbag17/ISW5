@@ -35,6 +35,8 @@ namespace ManteHos.Services
 
         WorkOrder CloseWorkOrder(WorkOrder wo, string report, DateTime endDate);
 
+        IEnumerable<Area> GetAreas();
+
 
     }
 }

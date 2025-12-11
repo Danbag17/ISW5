@@ -66,7 +66,6 @@
             this.labelDescripción.Size = new System.Drawing.Size(103, 23);
             this.labelDescripción.TabIndex = 0;
             this.labelDescripción.Text = "Descripción:";
-            this.labelDescripción.Click += new System.EventHandler(this.label1_Click);
             // 
             // labelFecha
             // 
@@ -76,7 +75,6 @@
             this.labelFecha.Size = new System.Drawing.Size(48, 16);
             this.labelFecha.TabIndex = 2;
             this.labelFecha.Text = "Fecha:";
-            this.labelFecha.Click += new System.EventHandler(this.label3_Click);
             // 
             // lblFecha
             // 
@@ -117,7 +115,6 @@
             this.lblPriori.Name = "lblPriori";
             this.lblPriori.Size = new System.Drawing.Size(0, 16);
             this.lblPriori.TabIndex = 7;
-            this.lblPriori.Click += new System.EventHandler(this.label8_Click);
             // 
             // txtDescripcion
             // 
@@ -153,7 +150,7 @@
             this.dgvIncidencias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvIncidencias.Size = new System.Drawing.Size(230, 400);
             this.dgvIncidencias.TabIndex = 1;
-            this.dgvIncidencias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            
             // 
             // label1
             // 
@@ -182,7 +179,7 @@
             this.panelDatos.Name = "panelDatos";
             this.panelDatos.Size = new System.Drawing.Size(265, 461);
             this.panelDatos.TabIndex = 2;
-            this.panelDatos.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDatos_Paint);
+          
             // 
             // lblReportado
             // 
@@ -255,8 +252,7 @@
             this.rbRechazar.TabIndex = 5;
             this.rbRechazar.Text = "Rechazar incidencia:";
             this.rbRechazar.UseVisualStyleBackColor = true;
-            this.rbRechazar.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
+            
             // cbPrioridad
             // 
             this.cbPrioridad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
