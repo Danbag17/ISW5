@@ -115,6 +115,9 @@
     <EmbeddedResource Include="HospitalApp.resx">
       <DependentUpon>HospitalApp.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="JefeForm.resx">
+      <DependentUpon>JefeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

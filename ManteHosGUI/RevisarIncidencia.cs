@@ -19,23 +19,43 @@ namespace ManteHosGUI
     {
         private IManteHosService service;
         private Incident incident;
-        public RevisarIncidencia(IManteHosService service, Incident incident)
+        public RevisarIncidencia(IManteHosService service)
         {
             InitializeComponent();
             this.service = service;
-            this.incident = incident;
         }
 
         private void RevisarIncidencia_Load(object sender, EventArgs e)
         {
-            CargarDatosIncidencia();
+            CargarIncidenciasPendientes();
             CargarAreas();
             CargarPrioridades();
-            ConfigurarEventosDecision(); //Cambiar nombre?
+            ConfigurarDecision(); 
             ActualizarInterfaz();
         }
 
-        private void CargarDatosIncidencia()
+        private void CargarIncidenciasPendientes()
+        {
+            var incidencias = service.GetIncidentsPendingReview().ToList();
+            dgvIncidencias.DataSource = incidencias;  
+        }
+
+        private void dgvIncidencias_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvIncidencias.SelectedRows.Count == 0)
+            {
+                return;
+            }
+            
+             incident = dgvIncidencias.SelectedRows[0].DataBoundItem as Incident;
+
+            if(incident != null)
+            {
+                CargarDatosIncidencia(incident);
+            }
+        }
+        
+        private void CargarDatosIncidencia(Incident incident)
         {
             txtDescripcion.Text = incident.Description;
 
@@ -60,7 +80,7 @@ namespace ManteHosGUI
             cbPrioridad.DataSource = Enum.GetValues(typeof(Priority));
         }
 
-        private void ConfigurarEventosDecision()
+        private void ConfigurarDecision()
         {
             rbAceptar.CheckedChanged += (s, e) => ActualizarInterfaz();
             rbRechazar.CheckedChanged += (s, e) => ActualizarInterfaz();
@@ -85,8 +105,24 @@ namespace ManteHosGUI
             }
         }
 
+        private void limpiarPantalla()
+        {
+            txtDescripcion.Clear();
+            lblFecha.Text = "";
+            lblReportado.Text = "";
+            lblDept.Text = "";
+            lblPriori.Text = "";
+        }
+
+
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
+            if (incident == null)
+            {
+                MessageBox.Show("Debe seleccionar una incidencia.");
+                return;
+            }
+
             try
             {
                 bool aceptar = rbAceptar.Checked;
@@ -121,16 +157,41 @@ namespace ManteHosGUI
                 service.ReviewIncident(incident, aceptar, motivo, area, prioridad);
 
                 MessageBox.Show("Incidencia revisada correctamente");
+                CargarIncidenciasPendientes();
+                incident = null;
+                limpiarPantalla();
 
                 this.Close();
             }
-            catch (ServerException ex)
+            catch (ServiceException ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
 
         private void btnCancelar_CLick(object sender, EventArgs e)
+        {
+
+            dgvIncidencias.ClearSelection();
+
+            incident = null;
+
+            limpiarPantalla();
+
+            rbAceptar.Checked = false;
+            rbRechazar.Checked = false;
+
+            ActualizarInterfaz();
+
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            service.Logout();
+            this.Close();
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
         {
             this.Close();
         }

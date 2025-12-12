@@ -1,4 +1,5 @@
 ﻿using ManteHos.Services;
+using ManteHos.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,9 @@ namespace ManteHosGUI
 {
     public partial class EmpleadoForm : ManteHosFormBase
     {
+        protected IManteHosService service;
+        protected Employee usuario;
+
         public EmpleadoForm()
         {
             InitializeComponent();
@@ -21,7 +25,8 @@ namespace ManteHosGUI
         public EmpleadoForm(IManteHosService s) : base(s)
         {
             InitializeComponent();
-            
+            service = s;
+            usuario = service.UserLogged();
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)

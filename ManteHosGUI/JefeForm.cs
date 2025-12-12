@@ -1,4 +1,5 @@
-﻿using ManteHos.Services;
+﻿using ManteHos.Entities;
+using ManteHos.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,14 +14,33 @@ namespace ManteHosGUI
 {
     public partial class JefeForm : EmpleadoForm
     {
-        public JefeForm()
-        {
-            InitializeComponent();
-        }
-
         public JefeForm(IManteHosService s) : base(s)
         {
             InitializeComponent();
+        }
+        private void JefeForm_Load(object sender, EventArgs e)
+        {
+            lblRol.Text = "Rol : Head";
+            lblSaludo.Text = "Hola " + usuario.FullName;
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            service.Logout();
+            this.Close();
+        }
+
+        private void btnRevisarIncidencias_Click(object sender, EventArgs e)
+        { 
+            RevisarIncidencia ventana = new RevisarIncidencia(service);
+            ventana.ShowDialog();
+
+        }
+
+        private void btnReportarIncidencia_Click(object sender, EventArgs e)
+        {
+            ReportarIncidencia ventana = new ReportarIncidencia(service);
+            ventana.ShowDialog();
         }
     }
 }
