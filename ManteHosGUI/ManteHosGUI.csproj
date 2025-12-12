@@ -68,6 +68,12 @@
     <Compile Include="AñadirIncidencia.Designer.cs">
       <DependentUpon>AñadirIncidencia.cs</DependentUpon>
     </Compile>
+    <Compile Include="CerrarOrdenTrabajo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CerrarOrdenTrabajo.Designer.cs">
+      <DependentUpon>CerrarOrdenTrabajo.cs</DependentUpon>
+    </Compile>
     <Compile Include="RevisarIncidencia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +114,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AñadirIncidencia.resx">
       <DependentUpon>AñadirIncidencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CerrarOrdenTrabajo.resx">
+      <DependentUpon>CerrarOrdenTrabajo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmpleadoForm.resx">
       <DependentUpon>EmpleadoForm.cs</DependentUpon>
