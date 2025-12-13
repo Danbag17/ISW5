@@ -26,7 +26,20 @@ namespace ManteHosGUI
 
         private void HospitalApp_Load(object sender, EventArgs e)
         {
+            // Crear el menú de Incidencias
+            ToolStripMenuItem incidenciasMenu = new ToolStripMenuItem("Incidencias");
+            ToolStripMenuItem añadirIncidenciaItem = new ToolStripMenuItem("Añadir Incidencia");
+            
+            // Conectar el evento click
+            añadirIncidenciaItem.Click += (s, args) => 
+            {
+                AñadirIncidencia form = new AñadirIncidencia(this.service);
+                form.ShowDialog();
+            };
 
+            // Añadir el item al menú y el menú al MenuStrip
+            incidenciasMenu.DropDownItems.Add(añadirIncidenciaItem);
+            this.menuStrip1.Items.Add(incidenciasMenu);
         }
 
         private void label1_Click(object sender, EventArgs e)

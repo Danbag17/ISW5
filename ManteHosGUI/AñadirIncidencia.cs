@@ -36,7 +36,7 @@ namespace ManteHosGUI
                 // 2. Recoger datos
                 string departamento = txtDepartamento.Text;
                 string descripcion = txtDescripcion.Text;
-                //DateTime fecha = dateFecha.Value;
+                DateTime fecha = dateTimePicker1.Value;
 
                 // 3. Obtener quién reporta (usuario logueado)
                 Employee reportero = service.UserLogged();
@@ -49,10 +49,10 @@ namespace ManteHosGUI
                 }
 
                 // 4. Crear el objeto
-                //Incident incidente = new Incident(departamento, descripcion, fecha, reportero);
+                Incident incidente = new Incident(departamento, descripcion, fecha, reportero);
 
                 // 5. Llamar al servicio para guardar en BD
-                //service.AddIncident(incidente);
+                service.AddIncident(incidente);
 
                 MessageBox.Show("Incidencia guardada correctamente.", "Éxito");
                 this.Close();
@@ -70,6 +70,11 @@ namespace ManteHosGUI
         }
     
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
 
         }

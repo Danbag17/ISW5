@@ -18,9 +18,17 @@ namespace ManteHosGUI
         static void Main()
         {
             IManteHosService service = new ManteHosService(new EntityFrameworkDAL(new ManteHosDbContext()));
+            // Inicializar DB si es necesario para pruebas
+            // service.DBInitialization(); 
+            try
+            {
+                service.Login("e1", "e1"); // Intento de login con usuario de prueba
+            }
+            catch { /* Ignorar si falla, el formulario manejará el estado no logueado */ }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new HospitalApp(service));
+            Application.Run(new AñadirIncidencia(service));
         }
     }
 }
