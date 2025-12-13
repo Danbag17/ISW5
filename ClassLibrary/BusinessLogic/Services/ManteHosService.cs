@@ -240,7 +240,7 @@ namespace ManteHos.Services
 
         public IEnumerable<Area> GetAreas()
         {
-            return dal.GetAll<Area>();
+            return dal.GetAll<Area>().ToList();
         }
 
         public IEnumerable<Incident> GetIncidentsPendingReview()

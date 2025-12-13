@@ -14,6 +14,12 @@ namespace ManteHosGUI
 {
     public partial class JefeForm : EmpleadoForm
     {
+        
+        public JefeForm()
+        {
+            InitializeComponent();
+        }
+        
         public JefeForm(IManteHosService s) : base(s)
         {
             InitializeComponent();
@@ -28,6 +34,12 @@ namespace ManteHosGUI
         {
             service.Logout();
             this.Close();
+        }
+
+        private void btnRevisar_Click(object sender, EventArgs e)
+        {
+            RevisarIncidencia ventana = new RevisarIncidencia(service);
+            ventana.ShowDialog();
         }
 
 
