@@ -256,6 +256,7 @@ namespace ManteHos.Services
                     pendientes.Add(i);
                 }
             }
+
             return pendientes;
         }
         public WorkOrder GetWorkOrderByIncident(Incident incident)
