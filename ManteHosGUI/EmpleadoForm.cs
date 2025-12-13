@@ -28,21 +28,17 @@ namespace ManteHosGUI
             usuario = service.UserLogged();
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            AñadirIncidencia ventana = new AñadirIncidencia(this.service);
-            ventana.ShowDialog();
-        }
-
-        private void toolStripTextBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void CerrarSesion_Click(object sender, EventArgs e)
         {
            this.Close();
 
+        }
+
+        private void ReportarIncidencia_Click(object sender, EventArgs e)
+        {
+            AñadirIncidencia ventana = new AñadirIncidencia(this.service);
+
+            ventana.ShowDialog();
         }
     }
 }
