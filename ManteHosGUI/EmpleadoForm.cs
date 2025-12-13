@@ -30,8 +30,25 @@ namespace ManteHosGUI
 
         private void CerrarSesion_Click(object sender, EventArgs e)
         {
-           this.Close();
+            // 1. Mostramos la ventana emergente preguntando
+            DialogResult respuesta = MessageBox.Show(
+                "¿Estás seguro de que quieres cerrar la sesión?",
+                "Cerrar Sesión",                                
+                MessageBoxButtons.YesNo,                        
+                MessageBoxIcon.Question                          
+            );
 
+            // 2. Comprobamos qué ha pulsado el usuario
+            if (respuesta == DialogResult.Yes)
+            {
+                // SÍ, cerramos la ventana.
+                // Esto hará que el control vuelva al Login (HospitalApp) y se ejecute el Logout real.
+                this.Close();
+            }
+            else
+            {
+                
+            }
         }
 
         private void ReportarIncidencia_Click(object sender, EventArgs e)
