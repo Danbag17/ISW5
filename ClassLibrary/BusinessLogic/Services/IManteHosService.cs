@@ -37,6 +37,8 @@ namespace ManteHos.Services
 
         IEnumerable<Area> GetAreas();
 
+        IEnumerable<Incident> GetIncidentsPendingReview();
+
 
     }
 }

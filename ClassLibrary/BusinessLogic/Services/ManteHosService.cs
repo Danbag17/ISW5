@@ -241,8 +241,23 @@ namespace ManteHos.Services
             return dal.GetAll<Area>();
         }
 
+        public IEnumerable<Incident> GetIncidentsPendingReview()
+        {
+            List<Incident> pendientes = new List<Incident>();
 
+            var todas = dal.GetAll<Incident>();
 
+            foreach (Incident i in todas)
+            {
+                if(i.Status == Status.Created)
+                {
+                    pendientes.Add(i);
+                }
+            }
+
+            return pendientes;
+            
+        }
 
     }
 }
