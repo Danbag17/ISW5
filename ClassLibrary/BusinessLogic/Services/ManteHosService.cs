@@ -254,9 +254,7 @@ namespace ManteHos.Services
                     pendientes.Add(i);
                 }
             }
-
             return pendientes;
-            
         }
 
     }
