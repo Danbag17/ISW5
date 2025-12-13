@@ -205,6 +205,8 @@ namespace ManteHos.Services
                 wo.AddOperator(op);
             }
 
+            incident.Status = Status.InProgress;
+
             dal.Insert(wo);
             dal.Commit();
 
