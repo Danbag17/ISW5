@@ -258,6 +258,30 @@ namespace ManteHos.Services
             }
             return pendientes;
         }
+        public WorkOrder GetWorkOrderByIncident(Incident incident)
+        {
+            return dal.GetWhere<WorkOrder>(wo => wo.Incident == incident).FirstOrDefault();
+        }
+        public List<WorkOrder> GetOpenWorkOrdersForOperator(Operator op)
+        {
+            // La validación de op != null se ha quitado por tu premisa
+            return dal.GetWhere<WorkOrder>(wo =>
+                wo.EndDate == null &&
+                wo.Operators.Contains(op)
+            ).ToList();
+        }
+        public void UpdateWorkOrderOperators(WorkOrder workOrder, List<Operator> newOperators)
+        {
+            if (workOrder == null)
+                throw new ServiceException("La orden de trabajo a actualizar no existe.");
 
+            workOrder.Operators.Clear();
+            foreach (Operator op in newOperators)
+            {
+                workOrder.Operators.Add(op);
+            }
+
+            dal.Commit();
+        }
     }
 }
