@@ -30,7 +30,7 @@ namespace ManteHosGUI
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new AñadirIncidencia(service));
+                Application.Run(new HospitalApp(service));
             }
             catch (Exception ex)
             {

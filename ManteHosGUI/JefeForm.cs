@@ -20,7 +20,7 @@ namespace ManteHosGUI
         }
         private void JefeForm_Load(object sender, EventArgs e)
         {
-            lblRol.Text = "Rol : Head";
+            lblRol.Text = "Rol : Jefe";
             lblSaludo.Text = "Hola " + usuario.FullName;
         }
 
@@ -30,12 +30,6 @@ namespace ManteHosGUI
             this.Close();
         }
 
-        private void btnRevisarIncidencias_Click(object sender, EventArgs e)
-        { 
-            RevisarIncidencia ventana = new RevisarIncidencia(service);
-            ventana.ShowDialog();
-
-        }
 
         /*private void btnReportarIncidencia_Click(object sender, EventArgs e)
         {

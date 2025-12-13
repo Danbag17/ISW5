@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace ManteHosGUI
 {
-    public partial class CerrarOrdenTrabajo : Form
+    public partial class CerrarOrdenTrabajo : ManteHosFormBase
     {
         // Usamos el tipo concreto para acceder al método auxiliar GetOpenWorkOrdersForOperator
         private readonly ManteHosService concreteService;

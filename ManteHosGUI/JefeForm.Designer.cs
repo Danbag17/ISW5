@@ -31,9 +31,7 @@
             this.lblRol = new System.Windows.Forms.Label();
             this.lblSaludo = new System.Windows.Forms.Label();
             this.lblOpciones = new System.Windows.Forms.Label();
-            this.btnReportar = new System.Windows.Forms.Button();
             this.btnRevisar = new System.Windows.Forms.Button();
-            this.btnLogout = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblRol
@@ -65,44 +63,22 @@
             this.lblOpciones.Size = new System.Drawing.Size(102, 25);
             this.lblOpciones.TabIndex = 3;
             this.lblOpciones.Text = "Opciones:";
-
-            // 
-            // btnReportar
-            // 
-            this.btnReportar.Location = new System.Drawing.Point(156, 240);
-            this.btnReportar.Name = "btnReportar";
-            this.btnReportar.Size = new System.Drawing.Size(180, 40);
-            this.btnReportar.TabIndex = 4;
-            this.btnReportar.Text = "Reportar Incidencia";
-            this.btnReportar.UseVisualStyleBackColor = true;
             // 
             // btnRevisar
             // 
-            this.btnRevisar.Location = new System.Drawing.Point(488, 240);
+            this.btnRevisar.Location = new System.Drawing.Point(316, 254);
             this.btnRevisar.Name = "btnRevisar";
             this.btnRevisar.Size = new System.Drawing.Size(180, 40);
             this.btnRevisar.TabIndex = 5;
             this.btnRevisar.Text = "Revisar Incidencias";
             this.btnRevisar.UseVisualStyleBackColor = true;
             // 
-            // btnLogout
-            // 
-            this.btnLogout.Location = new System.Drawing.Point(688, 12);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(100, 40);
-            this.btnLogout.TabIndex = 6;
-            this.btnLogout.Text = "Cerrar sesión";
-            this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-            // 
             // JefeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnRevisar);
-            this.Controls.Add(this.btnReportar);
             this.Controls.Add(this.lblOpciones);
             this.Controls.Add(this.lblSaludo);
             this.Controls.Add(this.lblRol);
@@ -112,9 +88,7 @@
             this.Controls.SetChildIndex(this.lblRol, 0);
             this.Controls.SetChildIndex(this.lblSaludo, 0);
             this.Controls.SetChildIndex(this.lblOpciones, 0);
-            this.Controls.SetChildIndex(this.btnReportar, 0);
             this.Controls.SetChildIndex(this.btnRevisar, 0);
-            this.Controls.SetChildIndex(this.btnLogout, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -125,8 +99,6 @@
         private System.Windows.Forms.Label lblRol;
         private System.Windows.Forms.Label lblSaludo;
         private System.Windows.Forms.Label lblOpciones;
-        private System.Windows.Forms.Button btnReportar;
         private System.Windows.Forms.Button btnRevisar;
-        private System.Windows.Forms.Button btnLogout;
     }
 }
