@@ -9,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace ManteHosGUI
 {
     public partial class AñadirIncidencia : ManteHosFormBase
@@ -21,45 +20,54 @@ namespace ManteHosGUI
         public AñadirIncidencia(IManteHosService s):base(s)
         {
             InitializeComponent();
+            // Esto llena la lista automáticamente con las opciones definidas en tu enum.
+            comboPrioridad.DataSource = Enum.GetValues(typeof(Priority));
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
             {
-                // 1. Validaciones básicas
-                if (string.IsNullOrWhiteSpace(txtDepartamento.Text) || string.IsNullOrWhiteSpace(txtDescripcion.Text))
+                // 1. Validaciones básicas (incluyendo que se haya seleccionado una prioridad)
+                if (string.IsNullOrWhiteSpace(txtDepartamento.Text) ||
+                    string.IsNullOrWhiteSpace(txtDescripcion.Text) ||
+                    comboPrioridad.SelectedItem == null)
                 {
-                    MessageBox.Show("Rellena todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Por favor, rellena todos los campos y selecciona una prioridad.", "Campos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                // 2. Recoger datos
+                // 2. Recoger datos del formulario
                 string departamento = txtDepartamento.Text;
                 string descripcion = txtDescripcion.Text;
-                DateTime fecha = dateTimePicker1.Value;
+                DateTime fecha = dateFecha.Value;
+                // Obtenemos el valor seleccionado y lo convertimos al tipo 'Priority'
+                Priority prioridadSeleccionada = (Priority)comboPrioridad.SelectedItem;
 
-                // 3. Obtener quién reporta (usuario logueado)
+                // 3. Obtener el usuario logueado
                 Employee reportero = service.UserLogged();
 
                 if (reportero == null)
                 {
-                    MessageBox.Show("No hay usuario logueado. Inicia sesión de nuevo.", "Error");
+                    MessageBox.Show("No hay usuario logueado. Debe iniciar sesión.", "Error de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.Close();
                     return;
                 }
 
-                // 4. Crear el objeto
+                // 4. Crear el objeto Incidencia
+                // Usamos el constructor básico y luego asignamos la prioridad
                 Incident incidente = new Incident(departamento, descripcion, fecha, reportero);
+                incidente.Priority = prioridadSeleccionada; // Asignamos la prioridad seleccionada
 
-                // 5. Llamar al servicio para guardar en BD
+                // 5. Llamar al servicio para guardar en la BD
                 service.AddIncident(incidente);
 
-                MessageBox.Show("Incidencia guardada correctamente.", "Éxito");
+                // 6. Feedback y cerrar
+                MessageBox.Show("Incidencia registrada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al guardar: " + ex.Message, "Error");
+                MessageBox.Show("Ocurrió un error al guardar la incidencia: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -75,6 +83,16 @@ namespace ManteHosGUI
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboPrioridad_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

@@ -39,7 +39,7 @@ namespace ManteHosGUI
 
         private void btnReportarIncidencia_Click(object sender, EventArgs e)
         {
-            ReportarIncidencia ventana = new ReportarIncidencia(service);
+            AñadirIncidencia ventana = new AñadirIncidencia(service);
             ventana.ShowDialog();
         }
     }

@@ -32,9 +32,12 @@
             this.txtDepartamento = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboPrioridad = new System.Windows.Forms.ComboBox();
+            this.dateFecha = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -73,26 +76,9 @@
             this.txtDescripcion.Size = new System.Drawing.Size(408, 60);
             this.txtDescripcion.TabIndex = 3;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(172, 172);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 16);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Fecha";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(282, 166);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker1.TabIndex = 6;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(577, 381);
+            this.btnGuardar.Location = new System.Drawing.Point(546, 383);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 7;
@@ -100,14 +86,63 @@
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(175, 176);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(96, 16);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Departamento ";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // comboPrioridad
+            // 
+            this.comboPrioridad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboPrioridad.FormattingEnabled = true;
+            this.comboPrioridad.Location = new System.Drawing.Point(282, 167);
+            this.comboPrioridad.Name = "comboPrioridad";
+            this.comboPrioridad.Size = new System.Drawing.Size(121, 24);
+            this.comboPrioridad.TabIndex = 10;
+            this.comboPrioridad.SelectedIndexChanged += new System.EventHandler(this.comboPrioridad_SelectedIndexChanged);
+            // 
+            // dateFecha
+            // 
+            this.dateFecha.Location = new System.Drawing.Point(282, 240);
+            this.dateFecha.Name = "dateFecha";
+            this.dateFecha.Size = new System.Drawing.Size(200, 22);
+            this.dateFecha.TabIndex = 11;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(178, 245);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 16);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Fecha";
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(647, 383);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 13;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
             // AñadirIncidencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.dateFecha);
+            this.Controls.Add(this.comboPrioridad);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtDepartamento);
@@ -126,8 +161,11 @@
         private System.Windows.Forms.TextBox txtDepartamento;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtDescripcion;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboPrioridad;
+        private System.Windows.Forms.DateTimePicker dateFecha;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }
