@@ -19,9 +19,16 @@ namespace ManteHosGUI
         }
         public AñadirIncidencia(IManteHosService s):base(s)
         {
-            InitializeComponent();
-            // Esto llena la lista automáticamente con las opciones definidas en tu enum.
-            comboPrioridad.DataSource = Enum.GetValues(typeof(Priority));
+            try
+            {
+                InitializeComponent();
+                // Esto llena la lista automáticamente con las opciones definidas en tu enum.
+                comboPrioridad.DataSource = Enum.GetValues(typeof(Priority));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error crítico al iniciar AñadirIncidencia: {ex.Message}\nStack: {ex.StackTrace}", "Error de Inicio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {

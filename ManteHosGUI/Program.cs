@@ -17,18 +17,25 @@ namespace ManteHosGUI
         [STAThread]
         static void Main()
         {
-            IManteHosService service = new ManteHosService(new EntityFrameworkDAL(new ManteHosDbContext()));
-            // Inicializar DB si es necesario para pruebas
-            // service.DBInitialization(); 
             try
             {
-                service.Login("e1", "e1"); // Intento de login con usuario de prueba
-            }
-            catch { /* Ignorar si falla, el formulario manejará el estado no logueado */ }
+                IManteHosService service = new ManteHosService(new EntityFrameworkDAL(new ManteHosDbContext()));
+                // Inicializar DB si es necesario para pruebas
+                // service.DBInitialization(); 
+                try
+                {
+                    service.Login("e1", "e1"); // Intento de login con usuario de prueba
+                }
+                catch { /* Ignorar si falla, el formulario manejará el estado no logueado */ }
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AñadirIncidencia(service));
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new AñadirIncidencia(service));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"FATAL ERROR en Program.cs: {ex.Message}\n{ex.InnerException?.Message}\n{ex.StackTrace}");
+            }
         }
     }
 }
