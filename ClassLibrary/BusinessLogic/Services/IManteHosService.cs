@@ -39,6 +39,8 @@ namespace ManteHos.Services
 
         IEnumerable<Incident> GetIncidentsPendingReview();
 
+        IEnumerable<Operator> GetOperatorsForIncident(Incident incident);
+
 
     }
 }
