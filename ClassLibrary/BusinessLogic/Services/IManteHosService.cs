@@ -48,6 +48,7 @@ namespace ManteHos.Services
         WorkOrder AddWorkOrder(Incident incident);
         void AssignOperatorToWorkOrder(WorkOrder wo, Operator op);
         void RemoveOperatorFromWorkOrder(WorkOrder wo, Operator op);
-
+        WorkOrder GetWorkOrderByIncident(Incident incident);
+        void UpdateWorkOrderOperators(WorkOrder workOrder, List<Operator> newOperators);
     }
 }

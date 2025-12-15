@@ -46,6 +46,8 @@ namespace ManteHos.Services
             RemoveAllData();
 
             // Dar de alta ciertos datos relevantes para el sistema
+
+
             Head head = new Head("Ibañez", "h1", "h1");
             AddPerson(head);
             Master tfmotu = new Master("Bárcenas", "m1", "m1");
@@ -54,17 +56,6 @@ namespace ManteHos.Services
             AddPerson(master2);
             Master master3 = new Master("Picasso", "m3", "m3");
             AddPerson(master3);
-            Operator op1 = new Operator("Pepe Gotera", "o1", "o1", Shift.Morning);
-            AddPerson(op1);
-            Operator op2 = new Operator("Otilio", "o2", "o2", Shift.Morning);
-            AddPerson(op2);
-            Operator op3 = new Operator("Rompetechos", "o3", "o3", Shift.Night);
-            AddPerson(op3);
-
-            Employee empleado1 = new Employee("Sacarino", "e1", "e1");
-            AddPerson(empleado1);
-            Employee empleado2 = new Employee("Pepe García", "e2", "e2");
-            AddPerson(empleado2);
 
             Area a1 = new Area("Mecánica", tfmotu);
             AddArea(a1);
@@ -72,6 +63,23 @@ namespace ManteHos.Services
             AddArea(a2);
             Area a3 = new Area("Pintura", master3);
             AddArea(a3);
+
+            Operator op1 = new Operator("Pepe Gotera", "o1", "o1", Shift.Morning);
+            op1.Area = a1;
+            AddPerson(op1);
+            Operator op2 = new Operator("Otilio", "o2", "o2", Shift.Morning);
+            op2.Area = a2;
+            AddPerson(op2);
+            Operator op3 = new Operator("Rompetechos", "o3", "o3", Shift.Night);
+            op3.Area = a3;
+            AddPerson(op3);
+
+            Employee empleado1 = new Employee("Sacarino", "e1", "e1");
+            AddPerson(empleado1);
+            Employee empleado2 = new Employee("Pepe García", "e2", "e2");
+            AddPerson(empleado2);
+
+            
 
             Part p1 = new Part("Esc50", 5, "Placa de escayola para techo", 1, "Placa de 50x30cms", 5);
             AddPart(p1);
@@ -261,7 +269,12 @@ namespace ManteHos.Services
         }
         public WorkOrder GetWorkOrderByIncident(Incident incident)
         {
-            return dal.GetWhere<WorkOrder>(wo => wo.Incident == incident).FirstOrDefault();
+            if (incident == null) return null;
+
+           
+            // wo.Incident.Id == incident.Id
+            return dal.GetWhere<WorkOrder>(wo => wo.Incident != null && wo.Incident.Id == incident.Id).FirstOrDefault();
+            
         }
         public List<WorkOrder> GetOpenWorkOrdersForOperator(Operator op)
         {
@@ -287,9 +300,7 @@ namespace ManteHos.Services
 
 
         // 1. Para obtener los operarios de una incidencia (usa el área de la incidencia)
-        // ---------------------------------------------------------
-        // CORRECCIONES EN ManteHosService.cs
-        // ---------------------------------------------------------
+        
 
         public List<Operator> GetOperatorsForIncident(Incident incident)
         {
@@ -307,7 +318,7 @@ namespace ManteHos.Services
             if (maestro == null || maestro.Area == null)
                 return new List<Incident>();
 
-            // CORREGIDO: Usamos i.Area.Id en vez de AreaID
+            
             return dal.GetAll<Incident>()
                       .Where(i => i.Area != null &&
                                   i.Area.Id == maestro.Area.Id &&
@@ -323,7 +334,7 @@ namespace ManteHos.Services
                       .ToList();
         }
 
-        // ... Los métodos AddWorkOrder, AssignOperatorToWorkOrder, etc. déjalos como están, esos estaban bien.
+        
 
         // 4. Para crear una Orden de Trabajo vacía (cuando el maestro dice "Sí" al mensaje)
         public WorkOrder AddWorkOrder(Incident incident)

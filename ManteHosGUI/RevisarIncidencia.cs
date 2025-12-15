@@ -152,7 +152,7 @@ namespace ManteHosGUI
                     if (area == null)
                     {
                         MessageBox.Show("Debe seleccionar un área.");
-
+                        return;
                     }
 
                     prioridad = (Priority)cbPrioridad.SelectedItem;
@@ -164,7 +164,7 @@ namespace ManteHosGUI
                     if (string.IsNullOrWhiteSpace(motivo))
                     {
                         MessageBox.Show("Debe indicar el motivo del rechazo.");
-
+                        return;
                     }
                 }
 
