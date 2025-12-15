@@ -21,7 +21,7 @@ namespace ManteHosGUI
             {
                 IManteHosService service = new ManteHosService(new EntityFrameworkDAL(new ManteHosDbContext()));
                 // Inicializar DB si es necesario para pruebas
-                // service.DBInitialization(); 
+                //service.DBInitialization(); 
                 try
                 {
                     service.Login("e1", "e1"); // Intento de login con usuario de prueba

@@ -1,6 +1,6 @@
 ﻿namespace ManteHosGUI
 {
-    partial class AssignWorkOrderForm
+    partial class AsignarOrdenDeTrabajo
     {
         private System.ComponentModel.IContainer components = null;
 

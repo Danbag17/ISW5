@@ -284,5 +284,92 @@ namespace ManteHos.Services
 
             dal.Commit();
         }
+
+
+        // 1. Para obtener los operarios de una incidencia (usa el área de la incidencia)
+        // ---------------------------------------------------------
+        // CORRECCIONES EN ManteHosService.cs
+        // ---------------------------------------------------------
+
+        public List<Operator> GetOperatorsForIncident(Incident incident)
+        {
+            if (incident == null || incident.Area == null)
+                return new List<Operator>();
+
+            // Pasamos el ID del área del incidente
+            return GetOperatorsByArea(incident.Area.Id);
+        }
+
+        public List<Incident> GetIncidentsForMaster(string masterId)
+        {
+            Master maestro = dal.GetById<Master>(masterId);
+
+            if (maestro == null || maestro.Area == null)
+                return new List<Incident>();
+
+            // CORREGIDO: Usamos i.Area.Id en vez de AreaID
+            return dal.GetAll<Incident>()
+                      .Where(i => i.Area != null &&
+                                  i.Area.Id == maestro.Area.Id &&
+                                  (i.Status == Status.Accepted || i.Status == Status.InProgress))
+                      .ToList();
+        }
+
+        public List<Operator> GetOperatorsByArea(int areaId)
+        {
+            // CORREGIDO: Usamos o.Area.Id en vez de AreaID
+            return dal.GetAll<Operator>()
+                      .Where(o => o.Area != null && o.Area.Id == areaId)
+                      .ToList();
+        }
+
+        // ... Los métodos AddWorkOrder, AssignOperatorToWorkOrder, etc. déjalos como están, esos estaban bien.
+
+        // 4. Para crear una Orden de Trabajo vacía (cuando el maestro dice "Sí" al mensaje)
+        public WorkOrder AddWorkOrder(Incident incident)
+        {
+            if (incident == null) throw new ServiceException("Incidencia nula");
+
+            WorkOrder wo = new WorkOrder(DateTime.Now, incident);
+            // Aseguramos que la hora también se registre si tu constructor lo pide
+            // wo.Time = DateTime.Now.TimeOfDay; 
+
+            dal.Insert(wo);
+            dal.Commit();
+            return wo;
+        }
+
+        // 5. Para añadir un operario a la orden
+        public void AssignOperatorToWorkOrder(WorkOrder wo, Operator op)
+        {
+            if (wo == null || op == null) return;
+
+            // Evitamos duplicados
+            if (!wo.Operators.Contains(op))
+            {
+                wo.Operators.Add(op);
+
+                // Si estaba solo "Aceptada", ahora pasa a "En Progreso"
+                if (wo.Incident.Status == Status.Accepted)
+                {
+                    wo.Incident.Status = Status.InProgress;
+                }
+
+                dal.Commit();
+            }
+        }
+
+        // 6. Para quitar un operario de la orden
+        public void RemoveOperatorFromWorkOrder(WorkOrder wo, Operator op)
+        {
+            if (wo == null || op == null) return;
+
+            if (wo.Operators.Contains(op))
+            {
+                wo.Operators.Remove(op);
+                dal.Commit();
+            }
+        }
+
     }
 }

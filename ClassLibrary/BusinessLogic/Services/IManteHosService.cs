@@ -39,8 +39,15 @@ namespace ManteHos.Services
 
         IEnumerable<Incident> GetIncidentsPendingReview();
 
-        IEnumerable<Operator> GetOperatorsForIncident(Incident incident);
+        //IEnumerable<Operator> GetOpenWorkerOrderForIncident(Incident incident);
 
+        
+        List<Incident> GetIncidentsForMaster(string masterId);
+        List<Operator> GetOperatorsByArea(int areaId);
+        List<Operator> GetOperatorsForIncident(Incident incident);
+        WorkOrder AddWorkOrder(Incident incident);
+        void AssignOperatorToWorkOrder(WorkOrder wo, Operator op);
+        void RemoveOperatorFromWorkOrder(WorkOrder wo, Operator op);
 
     }
 }

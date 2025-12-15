@@ -15,14 +15,18 @@ using ManteHos.Persistence;
 
 namespace ManteHosGUI
 {
-    public partial class RevisarIncidencia : Form
+    public partial class RevisarIncidencia : ManteHosFormBase
     {
-        private IManteHosService service;
+        
         private Incident incident;
-        public RevisarIncidencia(IManteHosService service)
+        public RevisarIncidencia()
         {
             InitializeComponent();
-            this.service = service;
+        }
+        public RevisarIncidencia(IManteHosService s): base(s)
+        {
+            InitializeComponent();
+            
         }
 
         private void RevisarIncidencia_Load(object sender, EventArgs e)
@@ -59,7 +63,7 @@ namespace ManteHosGUI
         {
             txtDescripcion.Text = incident.Description;
 
-            lblFecha.Text = "Fecha: " + incident.ReportDate.ToString("g");
+            lblFecha.Text = incident.ReportDate.ToString();
             string nombre = "(desconocido)";
             if (incident.Reporter != null)
                 nombre = incident.Reporter.FullName;
@@ -114,8 +118,18 @@ namespace ManteHosGUI
             lblPriori.Text = "";
         }
 
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            service.Logout();
+            this.Close();
+        }
 
-        private void btnConfirmar_Click(object sender, EventArgs e)
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnConfirmar_Click_1(object sender, EventArgs e)
         {
             if (incident == null)
             {
@@ -135,10 +149,10 @@ namespace ManteHosGUI
                 {
                     area = cbArea.SelectedItem as Area;
 
-                    if(area == null)
+                    if (area == null)
                     {
                         MessageBox.Show("Debe seleccionar un área.");
-                        return;
+
                     }
 
                     prioridad = (Priority)cbPrioridad.SelectedItem;
@@ -150,7 +164,7 @@ namespace ManteHosGUI
                     if (string.IsNullOrWhiteSpace(motivo))
                     {
                         MessageBox.Show("Debe indicar el motivo del rechazo.");
-                        return;
+
                     }
                 }
 
@@ -169,9 +183,8 @@ namespace ManteHosGUI
             }
         }
 
-        private void btnCancelar_CLick(object sender, EventArgs e)
+        private void btnCancelar_Click_1(object sender, EventArgs e)
         {
-
             dgvIncidencias.ClearSelection();
 
             incident = null;
@@ -182,18 +195,6 @@ namespace ManteHosGUI
             rbRechazar.Checked = false;
 
             ActualizarInterfaz();
-
-        }
-
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-            service.Logout();
-            this.Close();
-        }
-
-        private void btnAtras_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

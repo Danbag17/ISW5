@@ -7,7 +7,7 @@ using ManteHos.Entities;
 
 namespace ManteHosGUI
 {
-    public partial class AssignWorkOrderForm : Form
+    public partial class AsignarOrdenDeTrabajo : Form
     {
         private readonly IManteHosService service;
         private readonly Incident incident;
@@ -15,7 +15,7 @@ namespace ManteHosGUI
         private List<Operator> availableOperators;
         private List<Operator> assignedOperators;
 
-        public AssignWorkOrderForm(IManteHosService service, Incident incident)
+        public AsignarOrdenDeTrabajo(IManteHosService service, Incident incident)
         {
             InitializeComponent();
 
