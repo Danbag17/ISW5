@@ -198,23 +198,19 @@ namespace ManteHos.Services
         public WorkOrder AssignWorkOrder(Incident incident, List<Operator> operators)
         {
             if (incident == null)
-                throw new ServiceException("La incidencia no existe.");
+                throw new ServiceException("Incidencia inválida.");
 
-            if (incident.Status != Status.Accepted)
-                throw new ServiceException("La incidencia debe estar aceptada antes de asignar una orden.");
+            if (operators == null || !operators.Any())
+                throw new ServiceException("Debe asignar al menos un operario.");
 
-            if (operators == null || operators.Count == 0)
-                throw new ServiceException("Debe asignarse al menos un operario.");
-
+            // Crear la orden
             WorkOrder wo = new WorkOrder(DateTime.Now, incident);
 
+            // Asociar operarios (OO puro)
             foreach (Operator op in operators)
-            {
                 wo.AddOperator(op);
-            }
 
-            incident.Status = Status.InProgress;
-
+            // Persistencia
             dal.Insert(wo);
             dal.Commit();
 
@@ -278,11 +274,14 @@ namespace ManteHos.Services
         }
         public List<WorkOrder> GetOpenWorkOrdersForOperator(Operator op)
         {
-            // La validación de op != null se ha quitado por tu premisa
-            return dal.GetWhere<WorkOrder>(wo =>
-                wo.EndDate == null &&
-                wo.Operators.Any(o => o.Id == op.Id)
-            ).ToList();
+            if (op == null)
+                throw new ServiceException("Operario inválido.");
+
+            return dal.GetAll<WorkOrder>()
+                .Where(wo =>
+                    wo.Operators.Contains(op) &&
+                    wo.EndDate == null)
+                .ToList();
         }
         public void UpdateWorkOrderOperators(WorkOrder workOrder, List<Operator> newOperators)
         {
