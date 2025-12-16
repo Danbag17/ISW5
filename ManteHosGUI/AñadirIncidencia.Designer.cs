@@ -91,9 +91,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(175, 176);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 16);
+            this.label4.Size = new System.Drawing.Size(62, 16);
             this.label4.TabIndex = 9;
-            this.label4.Text = "Departamento ";
+            this.label4.Text = "Prioridad";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // comboPrioridad

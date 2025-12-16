@@ -8,9 +8,7 @@ namespace ManteHosGUI
     // Hereda de EmpleadoForm, como el JefeForm
     public partial class OperarioForm : EmpleadoForm
     {
-        private readonly IManteHosService service;
-        private readonly Employee usuario;
-
+       
         public OperarioForm(IManteHosService s) : base(s)
         {
             InitializeComponent();
@@ -23,8 +21,9 @@ namespace ManteHosGUI
 
         private void OperarioForm_Load(object sender, EventArgs e)
         {
-            // Siguiendo el patrón de JefeForm:
-            lblRol.Text = "Rol : Operario";
+        
+        // Siguiendo el patrón de JefeForm:
+        lblRol.Text = "Rol : Operario";
             // Asumimos que 'usuario' es accesible y tiene FullName
             lblSaludo.Text = "Hola " + usuario.FullName;
         }

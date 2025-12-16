@@ -281,7 +281,7 @@ namespace ManteHos.Services
             // La validación de op != null se ha quitado por tu premisa
             return dal.GetWhere<WorkOrder>(wo =>
                 wo.EndDate == null &&
-                wo.Operators.Contains(op)
+                wo.Operators.Any(o => o.Id == op.Id)
             ).ToList();
         }
         public void UpdateWorkOrderOperators(WorkOrder workOrder, List<Operator> newOperators)

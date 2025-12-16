@@ -50,5 +50,6 @@ namespace ManteHos.Services
         void RemoveOperatorFromWorkOrder(WorkOrder wo, Operator op);
         WorkOrder GetWorkOrderByIncident(Incident incident);
         void UpdateWorkOrderOperators(WorkOrder workOrder, List<Operator> newOperators);
+        List<WorkOrder> GetOpenWorkOrdersForOperator(Operator op);
     }
 }

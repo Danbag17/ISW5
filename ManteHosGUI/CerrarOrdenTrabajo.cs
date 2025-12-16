@@ -11,11 +11,15 @@ namespace ManteHosGUI
     {
         // Usamos el tipo concreto para acceder al método auxiliar GetOpenWorkOrdersForOperator
         private readonly ManteHosService concreteService;
-        private readonly IManteHosService service;
+        
         private readonly Operator loggedOp;
         private WorkOrder selectedOrder;
+        public CerrarOrdenTrabajo()
+        {
+            InitializeComponent();
+        }
 
-        public CerrarOrdenTrabajo(IManteHosService s)
+        public CerrarOrdenTrabajo(IManteHosService s): base(s)
         {
             InitializeComponent();
             this.service = s;
