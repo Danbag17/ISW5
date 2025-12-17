@@ -45,7 +45,7 @@ namespace ManteHosGUI
                 string departamento = txtDepartamento.Text;
                 string descripcion = txtDescripcion.Text;
                 DateTime fecha = dateFecha.Value;
-                // Obtenemos el valor seleccionado y lo convertimos al tipo 'Priority'
+              
 
 
                 // 3. Obtener el usuario logueado
@@ -59,7 +59,7 @@ namespace ManteHosGUI
                 }
 
                 // 4. Crear el objeto Incidencia
-                // Usamos el constructor básico y luego asignamos la prioridad
+                // Usamos el constructor básico 
                 Incident incidente = new Incident(departamento, descripcion, fecha, reportero);
 
 

@@ -33,8 +33,6 @@
             this.lblFecha = new System.Windows.Forms.Label();
             this.labelDept = new System.Windows.Forms.Label();
             this.lblDept = new System.Windows.Forms.Label();
-            this.labelPriori = new System.Windows.Forms.Label();
-            this.lblPriori = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvIncidencias = new System.Windows.Forms.DataGridView();
@@ -102,23 +100,6 @@
             this.lblDept.Size = new System.Drawing.Size(0, 16);
             this.lblDept.TabIndex = 5;
             // 
-            // labelPriori
-            // 
-            this.labelPriori.AutoSize = true;
-            this.labelPriori.Location = new System.Drawing.Point(10, 393);
-            this.labelPriori.Name = "labelPriori";
-            this.labelPriori.Size = new System.Drawing.Size(65, 16);
-            this.labelPriori.TabIndex = 6;
-            this.labelPriori.Text = "Prioridad:";
-            // 
-            // lblPriori
-            // 
-            this.lblPriori.AutoSize = true;
-            this.lblPriori.Location = new System.Drawing.Point(88, 393);
-            this.lblPriori.Name = "lblPriori";
-            this.lblPriori.Size = new System.Drawing.Size(0, 16);
-            this.lblPriori.TabIndex = 7;
-            // 
             // txtDescripcion
             // 
             this.txtDescripcion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -170,9 +151,7 @@
             this.panelDatos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelDatos.Controls.Add(this.lblReportado);
             this.panelDatos.Controls.Add(this.labelReporte);
-            this.panelDatos.Controls.Add(this.lblPriori);
             this.panelDatos.Controls.Add(this.labelDescripción);
-            this.panelDatos.Controls.Add(this.labelPriori);
             this.panelDatos.Controls.Add(this.txtDescripcion);
             this.panelDatos.Controls.Add(this.labelDept);
             this.panelDatos.Controls.Add(this.lblDept);
@@ -365,8 +344,6 @@
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Label labelDept;
         private System.Windows.Forms.Label lblDept;
-        private System.Windows.Forms.Label labelPriori;
-        private System.Windows.Forms.Label lblPriori;
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;

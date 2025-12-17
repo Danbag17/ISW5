@@ -69,7 +69,7 @@ namespace ManteHosGUI
                 nombre = incident.Reporter.FullName;
             lblReportado.Text = nombre;
             lblDept.Text = incident.Department;
-            lblPriori.Text = incident.Priority.ToString();
+           
             //comprobar si directamente se pone valor = incident.Nombre o &"Nombre: "{incident.Nombre}
         }
         private void CargarAreas()
@@ -115,7 +115,7 @@ namespace ManteHosGUI
             lblFecha.Text = "";
             lblReportado.Text = "";
             lblDept.Text = "";
-            lblPriori.Text = "";
+            
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

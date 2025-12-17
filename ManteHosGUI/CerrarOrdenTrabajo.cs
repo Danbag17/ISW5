@@ -11,6 +11,10 @@ namespace ManteHosGUI
     {
         private readonly Operator loggedOp;
         private WorkOrder selectedOrder;
+        public CerrarOrdenTrabajo()
+        {
+            InitializeComponent();
+        }
 
         public CerrarOrdenTrabajo(IManteHosService s) : base(s)
         {
