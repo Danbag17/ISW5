@@ -9,22 +9,23 @@ namespace ManteHos.Persistence
 {
     public class ManteHosDbContext : DbContextISW
     {
-        public ManteHosDbContext() : base("Name=ManteHosDbConnection") //this is the connection string name
+        public ManteHosDbContext() : base("Name=ManteHosDbConnection")
         {
-            /*
-            See DbContext.Configuration documentation
-            */
+            // OBLIGATORIO: Permite que funcionen las relaciones y la carga diferida
             Configuration.ProxyCreationEnabled = true;
             Configuration.LazyLoadingEnabled = true;
         }
 
-        static ManteHosDbContext()
-        {
-            Database.SetInitializer<ManteHosDbContext>(new DropCreateDatabaseIfModelChanges<ManteHosDbContext>());
-        }
+     
+            static ManteHosDbContext()
+            {
+                // CAMBIO IMPORTANTE: Usamos 'DropCreateDatabaseAlways' para forzar el arreglo
+                // Una vez te funcione, puedes volver a poner 'IfModelChanges'
+                Database.SetInitializer<ManteHosDbContext>(new DropCreateDatabaseAlways<ManteHosDbContext>());
+            }
+        
 
-        // DbSets for persistent classes in your case study
-        // TO BE DONE by STUDENTS...
+        // DbSets (Tablas)
         public virtual DbSet<Area> Areas { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Incident> Incidents { get; set; }
@@ -34,40 +35,30 @@ namespace ManteHos.Persistence
         public virtual DbSet<UsedPart> UsedParts { get; set; }
         public virtual DbSet<WorkOrder> WorkOrders { get; set; }
 
-
+        // AQUÍ ESTÁ EL ARREGLO DE LA TABLA INTERMEDIA
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            // Configuración de fechas
             modelBuilder.Properties<DateTime>().Configure(c => c.HasColumnType("datetime2"));
 
+            // --- ESTO ES LO QUE FALTABA PARA QUE SE GUARDEN LOS OPERARIOS ---
+            modelBuilder.Entity<WorkOrder>()
+                .HasMany(w => w.Operators)
+                .WithMany(o => o.WorkOrders)
+                .Map(m =>
+                {
+                    m.ToTable("WorkOrderOperators"); // Crea la tabla de unión
+                    m.MapLeftKey("WorkOrderId");
+                    m.MapRightKey("OperatorId");
+                });
+            // ----------------------------------------------------------------
+
             base.OnModelCreating(modelBuilder);
-            /*                        modelBuilder.Entity<Part>()
-                                                .HasMany(p => p.UsedParts)
-                                                .WithRequired(uP => uP.Part)
-                                                .WillCascadeOnDelete(true);
-
-                                    modelBuilder.Entity<UsedPart>()
-                                        .HasRequired(p => p.Part)
-                                        .WithMany(uP => uP.UsedParts)
-                                        .WillCascadeOnDelete(false);
-
-            */
-
         }
 
-        // Generic method to clear all the data (except some relations if needed)
         public override void RemoveAllData()
         {
-            clearSomeRelationships();
-
-            base.RemoveAllData(); 
+            base.RemoveAllData();
         }
-
-        // Sometimes it is needed to clear some relationships explicitly 
-        private void clearSomeRelationships()
-        {
-//            SaveChanges();
-        }
-
     }
 }
-

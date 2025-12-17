@@ -111,33 +111,43 @@ namespace ManteHosGUI
         // PASO 6: El sistema cierra la orden (al pulsar el botón)
         private void btnCerrarOrden_Click(object sender, EventArgs e)
         {
-            if (selectedOrder == null)
+            // 1. Validar que hay fila seleccionada
+            if (dfvOrdenes.CurrentRow == null)
             {
-                MessageBox.Show("Por favor, seleccione una orden de la lista.");
+                MessageBox.Show("Selecciona una orden.");
                 return;
             }
 
-            // PASO 5: El operario relata el trabajo y la fecha
-            string informe = txtInforme.Text.Trim();
-            DateTime fechaCierre = dtpFechaCierre.Value;
-
             try
             {
-                // PASO 6: Obligación del sistema (almacenar información)
-                // Incluye la extensión síncrona: validación de piezas pendientes
-                service.CloseWorkOrder(selectedOrder, informe, fechaCierre);
+                // 2. EL TRUCO: Cogemos solo el ID de la primera celda (Columna 0)
+                // Esto NO falla aunque uses tipos anónimos
+                int idOrden = Convert.ToInt32(dfvOrdenes.CurrentRow.Cells[0].Value);
 
-                MessageBox.Show("Orden cerrada con éxito.", "Éxito");
+                // 3. Recuperamos la orden REAL usando el servicio (Paso 1)
+                WorkOrder ordenReal = service.GetWorkOrderById(idOrden);
+
+                if (ordenReal == null)
+                {
+                    MessageBox.Show("No se encontró la orden en la BD.");
+                    return;
+                }
+
+                // 4. Recogemos los datos del formulario
+                string informe = txtInforme.Text; // Asegúrate de que tu TextBox se llama así
+                DateTime fechaFin = dtpFechaCierre.Value; // Asegúrate de que tu DateTimePicker se llama así
+
+                // 5. ¡CERRAMOS!
+                service.CloseWorkOrder(ordenReal, informe, fechaFin);
+
+                MessageBox.Show("¡Orden cerrada con éxito!");
                 this.Close();
-            }
-            catch (ServiceException ex)
-            {
-                // Extensión Síncrona 6: Si hay piezas pendientes, se muestra error y se sigue en paso 3
-                MessageBox.Show(ex.Message, "Error al cerrar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                // 6. Recargar la tabla para que desaparezca
+                // ActualizarGrid(); // O el método que uses para refrescar
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error inesperado: " + ex.Message);
+                MessageBox.Show("Error al cerrar: " + ex.Message);
             }
         }
 

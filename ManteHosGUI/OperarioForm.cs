@@ -8,11 +8,14 @@ namespace ManteHosGUI
     // Hereda de EmpleadoForm, como el JefeForm
     public partial class OperarioForm : EmpleadoForm
     {
-       
+       public OperarioForm()
+        {
+            InitializeComponent();
+        }
         public OperarioForm(IManteHosService s) : base(s)
         {
             InitializeComponent();
-            this.service = s;
+           
 
             // Asumimos que el usuario ya está logueado y es un Operario
             this.usuario = s.UserLogged();
