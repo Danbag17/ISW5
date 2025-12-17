@@ -43,31 +43,26 @@ namespace ManteHosGUI
         
         private void LoadOperators()
         {
-            // 1. Cargar TODOS los operarios disponibles del área
-            // (Asumiendo que GetOperatorsForIncident devuelve TODOS los del área)
             var allOperators = service.GetOperatorsForIncident(incident).ToList();
 
-            // 2. Comprobar si la incidencia YA TIENE una orden
-            // Necesitas un método en el servicio para traer la orden de la incidencia, ej: GetWorkOrderByIncident
             WorkOrder existingOrder = service.GetWorkOrderByIncident(incident);
 
             if (existingOrder != null)
             {
-                // CASO EDICIÓN: La orden existe
-                // Ponemos en la lista "Asignados" los que ya están en la BD
+
                 assignedOperators = existingOrder.Operators.ToList();
 
-                // En la lista "Disponibles" ponemos (Todos - Asignados)
+
                 availableOperators = allOperators.Where(op => !assignedOperators.Any(ao => ao.Id == op.Id)).ToList();
 
-                // Cambiamos el texto del botón porque ya no es "Crear", es "Guardar/Actualizar"
+
                 btnCreateWorkOrder.Text = "Actualizar Orden";
             }
             else
             {
-                // CASO CREACIÓN: No existe orden
+
                 availableOperators = allOperators;
-                assignedOperators = new List<Operator>(); // Lista vacía
+                assignedOperators = new List<Operator>(); 
             }
         }
         
@@ -117,13 +112,12 @@ namespace ManteHosGUI
 
                 if (ordenExistente == null)
                 {
-                    // CREAR NUEVA (Lo que ya tienes)
+
                     service.AssignWorkOrder(incident, assignedOperators);
                 }
                 else
                 {
-                    // ACTUALIZAR EXISTENTE (Te falta este método en el servicio)
-                    // Necesitas algo como: service.UpdateWorkOrderOperators(ordenExistente, assignedOperators);
+
                     service.UpdateWorkOrderOperators(ordenExistente, assignedOperators);
                 }
                 this.Close();

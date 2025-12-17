@@ -277,12 +277,15 @@ namespace ManteHos.Services
             if (op == null)
                 throw new ServiceException("Operario inválido.");
 
+            string opId = op.Id;
+
             return dal.GetAll<WorkOrder>()
                 .Where(wo =>
-                    wo.Operators.Contains(op) &&
-                    wo.EndDate == null)
+                    wo.EndDate == null &&
+                    wo.Operators.Any(o => o.Id == opId))
                 .ToList();
         }
+
         public void UpdateWorkOrderOperators(WorkOrder workOrder, List<Operator> newOperators)
         {
             if (workOrder == null)
