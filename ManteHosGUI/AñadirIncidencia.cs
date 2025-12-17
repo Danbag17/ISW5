@@ -17,13 +17,12 @@ namespace ManteHosGUI
         {
             InitializeComponent();
         }
-        public AñadirIncidencia(IManteHosService s):base(s)
+        public AñadirIncidencia(IManteHosService s) : base(s)
         {
             try
             {
                 InitializeComponent();
-                // Esto llena la lista automáticamente con las opciones definidas en tu enum.
-                comboPrioridad.DataSource = Enum.GetValues(typeof(Priority));
+
             }
             catch (Exception ex)
             {
@@ -36,8 +35,7 @@ namespace ManteHosGUI
             {
                 // 1. Validaciones básicas (incluyendo que se haya seleccionado una prioridad)
                 if (string.IsNullOrWhiteSpace(txtDepartamento.Text) ||
-                    string.IsNullOrWhiteSpace(txtDescripcion.Text) ||
-                    comboPrioridad.SelectedItem == null)
+                    string.IsNullOrWhiteSpace(txtDescripcion.Text))
                 {
                     MessageBox.Show("Por favor, rellena todos los campos y selecciona una prioridad.", "Campos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -48,7 +46,7 @@ namespace ManteHosGUI
                 string descripcion = txtDescripcion.Text;
                 DateTime fecha = dateFecha.Value;
                 // Obtenemos el valor seleccionado y lo convertimos al tipo 'Priority'
-                Priority prioridadSeleccionada = (Priority)comboPrioridad.SelectedItem;
+
 
                 // 3. Obtener el usuario logueado
                 Employee reportero = service.UserLogged();
@@ -63,7 +61,7 @@ namespace ManteHosGUI
                 // 4. Crear el objeto Incidencia
                 // Usamos el constructor básico y luego asignamos la prioridad
                 Incident incidente = new Incident(departamento, descripcion, fecha, reportero);
-                incidente.Priority = prioridadSeleccionada; // Asignamos la prioridad seleccionada
+
 
                 // 5. Llamar al servicio para guardar en la BD
                 service.AddIncident(incidente);
@@ -83,7 +81,7 @@ namespace ManteHosGUI
         {
             this.Close();
         }
-    
+
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -99,9 +97,5 @@ namespace ManteHosGUI
 
         }
 
-        private void comboPrioridad_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
