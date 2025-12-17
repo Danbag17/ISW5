@@ -24,10 +24,23 @@ namespace ManteHos.Entities
             UsedParts.Add(uP);
             return uP;
         }
-        public void AddOperator(Operator op1)
+        public void AddOperator(Operator op)
         {
-            if (!Operators.Contains(op1))
-                Operators.Add(op1);
+            if (op != null)
+            {
+                // Añadimos el operario a la orden
+                if (!this.Operators.Contains(op))
+                {
+                    this.Operators.Add(op);
+
+                    // IMPORTANTE: Asegurar que el operario también conozca la orden 
+                    // si la relación está definida en ambos sentidos en tu modelo
+                    if (!op.WorkOrders.Contains(this))
+                    {
+                        op.WorkOrders.Add(this);
+                    }
+                }
+            }
         }
 
 

@@ -100,7 +100,7 @@ namespace ManteHosGUI
 
         private void btnCreateWorkOrder_Click(object sender, EventArgs e)
         {
-            if (assignedOperators.Count == 0)
+            if (assignedOperators == null || assignedOperators.Count == 0)
             {
                 MessageBox.Show("Debe asignar al menos un operario.");
                 return;
@@ -112,19 +112,22 @@ namespace ManteHosGUI
 
                 if (ordenExistente == null)
                 {
-
                     service.AssignWorkOrder(incident, assignedOperators);
+                    MessageBox.Show("Orden de trabajo CREADA y guardada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-
                     service.UpdateWorkOrderOperators(ordenExistente, assignedOperators);
+                    MessageBox.Show("Asignación de operarios ACTUALIZADA correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+
+                this.DialogResult = DialogResult.OK; 
                 this.Close();
             }
-            catch (ServiceException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Cambiamos a Exception para ver CUALQUIER error de la base de datos
+                MessageBox.Show("Error al guardar: " + ex.Message, "Error Crítico", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

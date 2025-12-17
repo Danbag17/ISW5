@@ -273,15 +273,19 @@ namespace ManteHos.Services
         }
         public List<WorkOrder> GetOpenWorkOrdersForOperator(Operator op)
         {
-            if (op == null)
-                throw new ServiceException("Operario inválido.");
+            if (op == null) throw new ServiceException("Operario inválido.");
 
-            string opId = op.Id;
+            string targetId = op.Id;
 
-            return dal.GetAll<WorkOrder>()
-                .Where(wo =>
-                    wo.EndDate == null &&
-                    wo.Operators.Any(o => o.Id == opId))
+            // 1. Obtenemos las órdenes que NO tienen fecha de fin (abiertas)
+            // 2. Usamos .ToList() para traer los datos a memoria
+            var todasLasAbiertas = dal.GetAll<WorkOrder>()
+                .Where(wo => wo.EndDate == null)
+                .ToList();
+
+            // 3. Filtramos manualmente por el ID del operario
+            return todasLasAbiertas
+                .Where(wo => wo.Operators != null && wo.Operators.Any(o => o.Id == targetId))
                 .ToList();
         }
 
