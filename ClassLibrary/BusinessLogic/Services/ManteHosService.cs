@@ -197,23 +197,22 @@ namespace ManteHos.Services
         }
         public WorkOrder AssignWorkOrder(Incident incident, List<Operator> operators)
         {
-            if (incident == null)
-                throw new ServiceException("Incidencia inválida.");
+            incident.Status = Status.InProgress;
 
-            if (operators == null || !operators.Any())
-                throw new ServiceException("Debe asignar al menos un operario.");
-
-            // Crear la orden
             WorkOrder wo = new WorkOrder(DateTime.Now, incident);
 
-            // Asociar operarios (OO puro)
             foreach (Operator op in operators)
-                wo.AddOperator(op);
+            {
+                // Buscamos al operario REAL en la base de datos usando su ID
+                var operarioBD = dal.GetById<Operator>(op.Id);
+                if (operarioBD != null)
+                {
+                    wo.AddOperator(operarioBD); // Esto llena la tabla intermedia
+                }
+            }
 
-            // Persistencia
             dal.Insert(wo);
             dal.Commit();
-
             return wo;
         }
 

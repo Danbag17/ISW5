@@ -16,9 +16,6 @@ namespace ManteHos.Entities
         public WorkOrder(DateTime StartDate, Incident Incident) :this() {
             this.StartDate = StartDate;
             this.Incident = Incident;
-            this.Operators = new List<Operator>();
-            this.UsedParts = new List<UsedPart>();
-        
         }
         // Implementación trivial para el Persistence Test
         public UsedPart AddUsedPart(int aQuantity, Part aPart)
